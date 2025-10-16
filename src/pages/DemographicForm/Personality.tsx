@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface PersonalityTestProps {
   assessmentId?: string;
@@ -127,11 +128,13 @@ const pages: string[][] = [
     'Olyan dolgokat látok szépnek, amiket mások nem vesznek észre',
   ],
 ];
+const ACTIVE_PAGES = 3; // only show first 3 pages
 
 function PersonalityTest({ assessmentId: _assessmentId, onSubmit }: PersonalityTestProps) {
   const [page, setPage] = React.useState(0);
   const [responses, setResponses] = React.useState(Array(100).fill(null) as (string | null)[]);
   const [error, setError] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleResponseChange = (index: number, value: string) => {
     const responseIndex = page * 10 + index;
@@ -143,32 +146,31 @@ function PersonalityTest({ assessmentId: _assessmentId, onSubmit }: PersonalityT
 
   const handleNextPage = () => {
     // The original validation logic has been commented out on purpose to disable per-page validation.
-    /*
-    const currentResponses = responses.slice(page * 10, (page + 1) * 10)
-    const isPageComplete = currentResponses.every((r) => r !== null)
+    const currentResponses = responses.slice(page * 10, (page + 1) * 10);
+    const isPageComplete = currentResponses.every(r => r !== null);
     if (!isPageComplete) {
-      setError(true)
-      const firstUnansweredIndex = currentResponses.findIndex(r => r === null)
+      setError(true);
+      const firstUnansweredIndex = currentResponses.findIndex(r => r === null);
       if (firstUnansweredIndex !== -1) {
-        const element = document.getElementById(`statement-${firstUnansweredIndex}-1`)
+        const element = document.getElementById(`statement-${firstUnansweredIndex}-1`);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }
-      return
+      return;
     }
-    */
 
-    // proceed without validation
+    // proceed with per-page validation active
     setError(false);
-    if (page < pages.length - 1) {
+    const activePages = pages.slice(0, ACTIVE_PAGES);
+    if (page < activePages.length - 1) {
       setPage(page + 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       const cleanResponses: string[] = responses.map((r: string | null) => r || '');
       if (onSubmit) onSubmit(cleanResponses);
-      // In this React Router app we don't navigate here by default; caller can handle navigation.
-      // console.log('Finished', assessmentId, cleanResponses)
+      // Navigate to cognitive page and pass personality responses via state
+      navigate('/DemographicForm/Cognitive', { state: { personalityResponses: cleanResponses } });
     }
   };
 
@@ -177,6 +179,8 @@ function PersonalityTest({ assessmentId: _assessmentId, onSubmit }: PersonalityT
     return currentResponses.filter((r: string | null) => r === null).length;
   };
 
+  const activePages = pages.slice(0, ACTIVE_PAGES);
+
   return (
     <div className="min-h-screen bg-bg flex items-center justify-center py-12 px-4 font-sans text-text">
       <div className="w-full max-w-xl p-8 md:p-12 shadow-md border border-muted bg-surface rounded-3xl">
@@ -184,17 +188,17 @@ function PersonalityTest({ assessmentId: _assessmentId, onSubmit }: PersonalityT
 
         <div className="mb-6">
           <p className="text-base text-center mb-3">
-            {page + 1} / {pages.length}
+            {page + 1} / {activePages.length}
           </p>
           <div className="w-full bg-blue-100 rounded-full h-2">
             <div
               className="bg-blue-600 h-2 rounded-full transition-all duration-300 ease-in-out"
-              style={{ width: `${((page + 1) / pages.length) * 100}%` }}
+              style={{ width: `${((page + 1) / activePages.length) * 100}%` }}
             />
           </div>
         </div>
 
-        {pages[page].map((statement, index) => {
+        {activePages[page].map((statement, index) => {
           const responseIndex = page * 10 + index;
           const isQuestionAnswered = responses[responseIndex] !== null;
           return (

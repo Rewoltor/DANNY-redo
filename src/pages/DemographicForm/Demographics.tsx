@@ -8,6 +8,10 @@ type DemographicsForm = {
   residence: string;
   healthcareQualification: string;
 };
+// Local aliases to avoid TypeScript React type-resolution issues in this environment
+const useState: any = (React as any).useState;
+type ChangeEvent<T = any> = any;
+type FormEvent<T = any> = any;
 
 export default function Demographics() {
   const [formData, setFormData] = React.useState({

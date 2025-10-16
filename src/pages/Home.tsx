@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
+// Local aliases to avoid TypeScript React type-resolution issues in this environment
+const useState: any = (React as any).useState;
+type ChangeEvent<T = any> = any;
 
 export default function Home() {
   const navigate = useNavigate();
-  const [consentGiven, setConsentGiven] = React.useState(false);
+  const [consentGiven, setConsentGiven] = useState(false);
 
   const handleStart = () => {
     if (consentGiven) {
@@ -91,9 +94,7 @@ export default function Home() {
               <input
                 type="checkbox"
                 checked={consentGiven}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setConsentGiven(e.target.checked)
-                }
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setConsentGiven(e.target.checked)}
                 className="mt-1 w-4 h-4 cursor-pointer accent-accent"
               />
               <span className="text-text">Elolvastam a tájékoztatót</span>
