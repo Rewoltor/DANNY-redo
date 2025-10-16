@@ -1,25 +1,42 @@
-import React, { useState } from 'react'
+import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+type DemographicsForm = {
+  age: string;
+  gender: string;
+  education: string;
+  residence: string;
+  healthcareQualification: string;
+};
 
 export default function Demographics() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = React.useState({
     age: '',
     gender: '',
     education: '',
     residence: '',
     healthcareQualification: '',
-  })
+  } as DemographicsForm);
 
-  const handleChange = (field: keyof typeof formData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
+  const handleChange = (field: keyof DemographicsForm, value: string) => {
+    setFormData((prev: DemographicsForm) => ({ ...prev, [field]: value }));
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Form data:', formData)
-    // navigate to next page when ready
-  }
+  const handleSelectChange =
+    (field: keyof DemographicsForm) => (e: React.ChangeEvent<HTMLSelectElement>) => {
+      handleChange(field, e.target.value);
+    };
 
-  const isFormValid = Object.values(formData).every((value) => value !== '')
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Form data:', formData);
+    // navigate to personality page
+    navigate('/DemographicForm/Personality');
+  };
+
+  const isFormValid = Object.values(formData).every(value => value !== '');
 
   return (
     <main className="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-bg">
@@ -37,7 +54,7 @@ export default function Demographics() {
             <select
               id="age"
               value={formData.age}
-              onChange={(e) => handleChange('age', e.target.value)}
+              onChange={handleSelectChange('age')}
               className="w-full px-4 py-3 bg-muted text-text rounded-md border-0 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
@@ -64,7 +81,7 @@ export default function Demographics() {
             <select
               id="gender"
               value={formData.gender}
-              onChange={(e) => handleChange('gender', e.target.value)}
+              onChange={handleSelectChange('gender')}
               className="w-full px-4 py-3 bg-muted text-text rounded-md border-0 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
@@ -73,10 +90,9 @@ export default function Demographics() {
                 backgroundSize: '1.5rem',
               }}
             >
+              <option value="">Válassza ki a nemét</option>
               <option value="male">Férfi</option>
               <option value="female">Nő</option>
-              <option value="other">Egyéb</option>
-              <option value="prefer-not-to-say">Nem kívánom megadni</option>
             </select>
           </div>
 
@@ -88,7 +104,7 @@ export default function Demographics() {
             <select
               id="education"
               value={formData.education}
-              onChange={(e) => handleChange('education', e.target.value)}
+              onChange={handleSelectChange('education')}
               className="w-full px-4 py-3 bg-muted text-text rounded-md border-0 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
@@ -114,7 +130,7 @@ export default function Demographics() {
             <select
               id="residence"
               value={formData.residence}
-              onChange={(e) => handleChange('residence', e.target.value)}
+              onChange={handleSelectChange('residence')}
               className="w-full px-4 py-3 bg-muted text-text rounded-md border-0 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
@@ -133,13 +149,16 @@ export default function Demographics() {
 
           {/* Healthcare Qualification */}
           <div>
-            <label htmlFor="healthcareQualification" className="block text-base font-semibold text-text mb-2">
+            <label
+              htmlFor="healthcareQualification"
+              className="block text-base font-semibold text-text mb-2"
+            >
               Egészségügyi végzettség
             </label>
             <select
               id="healthcareQualification"
               value={formData.healthcareQualification}
-              onChange={(e) => handleChange('healthcareQualification', e.target.value)}
+              onChange={handleSelectChange('healthcareQualification')}
               className="w-full px-4 py-3 bg-muted text-text rounded-md border-0 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
@@ -171,5 +190,5 @@ export default function Demographics() {
         </form>
       </div>
     </main>
-  )
+  );
 }

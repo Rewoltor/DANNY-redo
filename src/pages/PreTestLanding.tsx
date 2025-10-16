@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function PreTestLanding() {
-  const navigate = useNavigate()
-  const [consentGiven, setConsentGiven] = useState(false)
+  const navigate = useNavigate();
+  const [consentGiven, setConsentGiven] = React.useState(false);
 
   const handleStart = () => {
     if (consentGiven) {
-      navigate('/demographics')
+      navigate('/demographics');
     }
-  }
+  };
 
   return (
     <main className="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-bg">
@@ -22,25 +22,25 @@ export default function PreTestLanding() {
             Orvosi képek értékelése mesterséges intelligencia támogatással
           </h1>
           <div className="text-sm text-text leading-normal">
-            <p><strong>Kutató:</strong> Baltay Márton, MSc hallgató | <strong>Egyetem:</strong> Pázmány Péter Katolikus Egyetem</p>
-            <p className="mt-1"><strong>Témavezető:</strong> [Prof. név]</p>
+            <p>
+              <strong>Kutató:</strong> Baltay Márton, MSc hallgató | <strong>Egyetem:</strong>{' '}
+              Pázmány Péter Katolikus Egyetem
+            </p>
+            <p className="mt-1">
+              <strong>Témavezető:</strong> [Prof. név]
+            </p>
           </div>
         </div>
 
         <section className="mb-6">
-          <h3 className="text-lg mb-3 text-text font-semibold">
-            Mi a feladat?
-          </h3>
+          <h3 className="text-lg mb-3 text-text font-semibold">Mi a feladat?</h3>
           <p className="mb-4 text-text leading-relaxed">
-            Radiológiai képeken artritisz jelenlétének felismerése – eldönti, van-e artritisz, és megjelöli a gyanús területet.
+            Radiológiai képeken artritisz jelenlétének felismerése – eldönti, van-e artritisz, és
+            megjelöli a gyanús területet.
           </p>
 
-          <h3 className="text-lg mb-3 text-text font-semibold">
-            Mennyi idő?
-          </h3>
-          <p className="mb-2 text-text">
-            90-120 perc összesen:
-          </p>
+          <h3 className="text-lg mb-3 text-text font-semibold">Mennyi idő?</h3>
+          <p className="mb-2 text-text">90-120 perc összesen:</p>
           <ul className="list-disc ml-6 mb-6 space-y-1 text-text leading-normal">
             <li>Bevezető előadás (20-30 perc)</li>
             <li>10 gyakorló kép</li>
@@ -48,8 +48,14 @@ export default function PreTestLanding() {
           </ul>
         </section>
 
-        <section className="mb-6 p-4 rounded-md border-l-4" style={{ backgroundColor: '#fef3c7', borderLeftColor: '#f59e0b' }}>
-          <h3 className="text-base mb-3 flex items-center gap-2 font-semibold" style={{ color: '#92400e' }}>
+        <section
+          className="mb-6 p-4 rounded-md border-l-4"
+          style={{ backgroundColor: '#fef3c7', borderLeftColor: '#f59e0b' }}
+        >
+          <h3
+            className="text-base mb-3 flex items-center gap-2 font-semibold"
+            style={{ color: '#92400e' }}
+          >
             <span>⚠️</span> Fontos feltételek
           </h3>
           <p className="mb-2 font-semibold" style={{ color: '#78350f' }}>
@@ -72,24 +78,22 @@ export default function PreTestLanding() {
         </section>
 
         <section className="mb-6">
-          <h3 className="text-lg mb-3 text-text font-semibold">
-            Adatkezelés
-          </h3>
+          <h3 className="text-lg mb-3 text-text font-semibold">Adatkezelés</h3>
           <p className="text-text leading-relaxed">
             Adatai anonimizálva, kizárólag kutatási célra kerülnek felhasználásra.
           </p>
         </section>
 
         <section className="mb-6">
-          <p className="mb-4 text-text font-medium">
-            A továbblépéssel kijelentem, hogy:
-          </p>
+          <p className="mb-4 text-text font-medium">A továbblépéssel kijelentem, hogy:</p>
           <div className="space-y-3">
             <label className="flex items-start gap-3 cursor-pointer">
               <input
                 type="checkbox"
                 checked={consentGiven}
-                onChange={(e) => setConsentGiven(e.target.checked)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setConsentGiven(e.target.checked)
+                }
                 className="mt-1 w-4 h-4 cursor-pointer accent-accent"
               />
               <span className="text-text">Elolvastam a tájékoztatót</span>
@@ -99,11 +103,15 @@ export default function PreTestLanding() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-muted">
           <p className="text-sm text-text">
-            Kérdés? 
+            Kérdés?
             <br />
-            <a href="mailto:baltay.marton@gmail.com" className="text-accent underline">[baltay.marton@gmail.com]</a>
+            <a href="mailto:baltay.marton@gmail.com" className="text-accent underline">
+              [baltay.marton@gmail.com]
+            </a>
             <br />
-            <a href="tel:+36203971061" className="text-accent underline">[+36 20 397 1061]</a>
+            <a href="tel:+36203971061" className="text-accent underline">
+              [+36 20 397 1061]
+            </a>
           </p>
           <button
             onClick={handleStart}
@@ -115,5 +123,5 @@ export default function PreTestLanding() {
         </div>
       </div>
     </main>
-  )
+  );
 }

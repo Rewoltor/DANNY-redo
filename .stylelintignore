@@ -1,0 +1,7 @@
+# Ignore generated Tailwind output
+styles/output.css
+
+# Ignore other generated files
+dist/
+.vite/
+node_modules/
