@@ -6,6 +6,7 @@ export default function InstructionsPage() {
   let videoEl: HTMLVideoElement | null = null;
   const [progress, setProgress] = React.useState(0);
   const [watched, setWatched] = React.useState(false);
+  const [ackChecked, setAckChecked] = React.useState(false);
   const navigate = useNavigate();
 
   const setVideoRef = (el: HTMLVideoElement | null) => {
@@ -63,18 +64,28 @@ export default function InstructionsPage() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
-          <div className="flex-shrink-0">
-            <button
-              disabled={!watched}
-              onClick={handleNext}
-              aria-disabled={!watched}
-              className={`px-4 py-2 rounded-md font-semibold text-white transition-colors disabled:opacity-60`}
-              style={{ backgroundColor: watched ? accent : muted }}
-            >
-              {watched ? 'Tovább a tesztre' : 'Nézze meg a videót'}
-            </button>
-          </div>
+        <div className="mt-6 flex flex-col items-center gap-4">
+          {watched && (
+            <label className="flex items-center gap-3">
+              <input
+                type="checkbox"
+                checked={ackChecked}
+                onChange={e => setAckChecked(e.target.checked)}
+                className="w-4 h-4"
+              />
+              <span className="text-sm">Megnéztem a teljes videót és megértettem a feladatot</span>
+            </label>
+          )}
+
+          <button
+            disabled={!watched || !ackChecked}
+            onClick={handleNext}
+            aria-disabled={!watched || !ackChecked}
+            className={`px-6 py-3 rounded-md font-semibold text-white transition-colors disabled:opacity-60`}
+            style={{ backgroundColor: watched && ackChecked ? accent : muted }}
+          >
+            Tovább a tesztre
+          </button>
         </div>
       </div>
     </main>
