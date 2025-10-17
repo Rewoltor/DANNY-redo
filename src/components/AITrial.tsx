@@ -123,6 +123,14 @@ export default function AITrial({
             <div className="absolute left-4 top-4 bg-white/60 px-2 py-1 rounded text-sm">
               baseline (AI)
             </div>
+            <BBoxTool
+              imgRef={imgRef}
+              onChange={(b: any) => {
+                setUserBox(b);
+              }}
+              overlayBox={userBox}
+              enabled={showDraw && canDraw}
+            />
           </div>
         </div>
 
@@ -167,18 +175,7 @@ export default function AITrial({
           </button>
         </div>
 
-        {/* BBoxTool overlay uses the same imgRef so drawing happens on the first image */}
-        <div className="mb-4">
-          <BBoxTool
-            imgRef={imgRef}
-            src={imageSrc}
-            onChange={(b: any) => {
-              setUserBox(b);
-            }}
-            overlayBox={userBox /* show the user's box persistently */}
-            enabled={showDraw && canDraw}
-          />
-        </div>
+        <div className="mb-4" />
 
         <div className="flex justify-center">
           <button

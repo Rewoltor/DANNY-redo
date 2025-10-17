@@ -67,10 +67,18 @@ export default function BBoxTool({
     const canvas = canvasRef.current;
     if (!img || !canvas) return;
     const rect = img.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = rect.height;
-    canvas.style.width = `${rect.width}px`;
-    canvas.style.height = `${rect.height}px`;
+    // set pixel backing size and style size to match image display size
+    canvas.width = Math.round(rect.width);
+    canvas.height = Math.round(rect.height);
+    canvas.style.width = `${Math.round(rect.width)}px`;
+    canvas.style.height = `${Math.round(rect.height)}px`;
+    // ensure overlay container (if present) matches image size so absolute positioning works
+    try {
+      if (containerRef && containerRef.current) {
+        containerRef.current.style.width = `${Math.round(rect.width)}px`;
+        containerRef.current.style.height = `${Math.round(rect.height)}px`;
+      }
+    } catch (e) {}
     draw();
   };
 
