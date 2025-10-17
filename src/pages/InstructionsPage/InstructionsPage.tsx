@@ -28,7 +28,7 @@ export default function InstructionsPage() {
   const handleNext = () => {
     if (!watched) return;
     // navigate to the personality page by default
-    navigate('/DemographicForm/Personality');
+    navigate('/test/baseline');
   };
 
   const accent = tokens?.colors?.accent ?? '#2563eb';

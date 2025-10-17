@@ -188,35 +188,28 @@ function PersonalityTest({ assessmentId: _assessmentId, onSubmit }: PersonalityT
           }
 
           // Save raw responses and major traits into a dedicated participant_results collection
-          const resultDocRef = doc(db, 'participant_results', app.userID);
-          const answersDocRef = doc(db, 'answers', app.userID);
-
-          const resultPayload: any = {
+          // Consolidate all participant inputs under participants/{userID}
+          const participantRef = doc(db, 'participants', app.userID);
+          const participantPayload: any = {
             userID: app.userID,
-            big5: {
-              openness: major.openness,
-              conscientiousness: major.conscientiousness,
-              extroversion: major.extroversion,
-              agreeableness: major.agreeableness,
-              neuroticism: major.neuroticism,
+            personality: {
+              big5: {
+                openness: major.openness,
+                conscientiousness: major.conscientiousness,
+                extroversion: major.extroversion,
+                agreeableness: major.agreeableness,
+                neuroticism: major.neuroticism,
+              },
+              responses: {} as Record<string, string>,
+              savedAt: serverTimestamp(),
             },
-            personalitySavedAt: serverTimestamp(),
           };
 
-          const responsesMap: any = {};
           cleanResponses.forEach((r, i) => {
-            responsesMap[(i + 1).toString()] = r;
+            participantPayload.personality.responses[`q${i + 1}`] = r;
           });
 
-          const answersPayloadFull: any = {
-            userID: app.userID,
-            personality_responses: responsesMap,
-            personalitySavedAt: serverTimestamp(),
-          };
-
-          // Save raw answers to `answers/{userID}` and results to `participant_results/{userID}` (merge)
-          await setDoc(answersDocRef, answersPayloadFull, { merge: true });
-          await setDoc(resultDocRef, resultPayload, { merge: true });
+          await setDoc(participantRef, participantPayload, { merge: true });
         } catch (err) {
           console.error('Failed to save personality results to participant_results:', err);
         } finally {

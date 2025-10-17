@@ -104,28 +104,25 @@ export default function Cognitive({
             cognitiveScore++;
         }
 
-        const resultDocRef = doc(db, 'participant_results', app.userID);
-        const answersDocRef = doc(db, 'answers', app.userID);
-
-        const answersPayload: any = { userID: app.userID, cognitive_responses: {} };
-        for (let i = 1; i <= 10; i++) {
-          answersPayload.cognitive_responses[`q${i}`] = iqResponses[`q${i}`] ?? null;
-        }
-        answersPayload.cognitiveSavedAt = serverTimestamp();
-
-        const resultPayload: any = {
+        const participantRef = doc(db, 'participants', app.userID);
+        const participantPayload: any = {
           userID: app.userID,
-          cognitive_score: cognitiveScore,
-          cognitiveSavedAt: serverTimestamp(),
+          cognitive: {
+            responses: {},
+            score: cognitiveScore,
+            savedAt: serverTimestamp(),
+          },
         };
 
-        // Save raw answers and results (merge)
-        await setDoc(answersDocRef, answersPayload, { merge: true });
-        await setDoc(resultDocRef, resultPayload, { merge: true });
+        for (let i = 1; i <= 10; i++) {
+          participantPayload.cognitive.responses[`q${i}`] = iqResponses[`q${i}`] ?? null;
+        }
+
+        await setDoc(participantRef, participantPayload, { merge: true });
       } catch (err) {
         console.error('Failed to save IQ score', err);
       } finally {
-        navigate('/pretest');
+        navigate('/InstructionsPage/InstructionsPage');
       }
     })();
   };
