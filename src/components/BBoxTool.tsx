@@ -6,12 +6,16 @@ export default function BBoxTool({
   src,
   onChange,
   overlayBox,
+  imgRef: externalImgRef,
+  enabled = true,
 }: {
-  src: string;
+  src?: string;
   onChange: (b: BBox) => void;
   overlayBox?: BBox | null;
+  imgRef?: any; // optional external image ref to overlay on
+  enabled?: boolean;
 }) {
-  const imgRef = (React as any).useRef(null);
+  const imgRef = externalImgRef || (React as any).useRef(null);
   const canvasRef = (React as any).useRef(null);
   const containerRef = (React as any).useRef(null);
   const [drawing, setDrawing] = (React as any).useState(false);
@@ -77,12 +81,17 @@ export default function BBoxTool({
 
   React.useEffect(() => {
     // when overlayBox changes (e.g., AI box), render it
-    if (!overlayBox) return;
-    const d = naturalToDisplay(overlayBox as BBox);
-    setDisplayBox(d);
+    // overlayBox represents the user's box when parent passes it; reflect into displayBox
+    if (overlayBox) {
+      const d = naturalToDisplay(overlayBox as BBox);
+      setDisplayBox(d);
+    } else {
+      setDisplayBox(null);
+    }
   }, [overlayBox]);
 
   const handlePointerDown = (e: any) => {
+    if (!enabled) return;
     const p = clientToDisplay(e.clientX, e.clientY);
     if (!p) return;
     setStartPoint({ x: p.x, y: p.y });
@@ -90,6 +99,7 @@ export default function BBoxTool({
   };
 
   const handlePointerMove = (e: any) => {
+    if (!enabled) return;
     if (!drawing || !startPoint) return;
     const p = clientToDisplay(e.clientX, e.clientY);
     if (!p) return;
@@ -149,15 +159,6 @@ export default function BBoxTool({
       ctx.textBaseline = 'middle';
       ctx.fillText('×', cx, cy + 1);
     }
-    // draw overlayBox (AI) in red beneath user box
-    if (overlayBox) {
-      ctx.strokeStyle = 'rgba(220,38,38,0.9)';
-      ctx.lineWidth = 2;
-      ctx.setLineDash([]);
-      ctx.strokeRect(overlayBox.x, overlayBox.y, overlayBox.width, overlayBox.height);
-      ctx.fillStyle = 'rgba(220,38,38,0.08)';
-      ctx.fillRect(overlayBox.x, overlayBox.y, overlayBox.width, overlayBox.height);
-    }
   };
 
   // handle click on canvas to detect delete button
@@ -181,9 +182,16 @@ export default function BBoxTool({
     const onLoad = () => {
       resizeCanvas();
     };
-    img.addEventListener('load', onLoad);
+    // some imageRefs may be real DOM nodes already loaded
+    try {
+      img.addEventListener && img.addEventListener('load', onLoad);
+    } catch (e) {}
     resizeCanvas();
-    return () => img.removeEventListener('load', onLoad);
+    return () => {
+      try {
+        img.removeEventListener && img.removeEventListener('load', onLoad);
+      } catch (e) {}
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src]);
 
@@ -191,6 +199,57 @@ export default function BBoxTool({
     draw();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [displayBox, overlayBox]);
+  const usingExternal = !!externalImgRef;
+
+  if (usingExternal) {
+    // only render overlay canvas and clear button positioned absolutely
+    return (
+      <div
+        ref={containerRef as any}
+        style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
+      >
+        <canvas
+          ref={canvasRef}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onClick={handleCanvasClick}
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: '100%',
+            height: '100%',
+            pointerEvents: enabled ? 'auto' : 'none',
+          }}
+        />
+        {/* clear button rendered on top of overlay when a box exists */}
+        {displayBox && (
+          <button
+            onClick={clearBox}
+            style={{
+              position: 'absolute',
+              left: displayBox.x + displayBox.width - 12,
+              top: displayBox.y - 12,
+              width: 24,
+              height: 24,
+              borderRadius: 12,
+              background: 'white',
+              border: '1px solid #ddd',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              pointerEvents: 'auto',
+              cursor: 'pointer',
+            }}
+            title="Clear box"
+          >
+            ×
+          </button>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="w-full" ref={containerRef}>
@@ -211,7 +270,12 @@ export default function BBoxTool({
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onClick={handleCanvasClick}
-          style={{ position: 'absolute', left: 0, top: 0, pointerEvents: 'auto' }}
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            pointerEvents: enabled ? 'auto' : 'none',
+          }}
         />
       </div>
       <div className="mt-2 flex gap-2">

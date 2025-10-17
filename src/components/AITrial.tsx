@@ -54,6 +54,7 @@ export default function AITrial({
   const canNext = canDiagnose && !!diagnosis;
 
   const handleOpenDraw = () => setShowDraw(true);
+  const handleToggleDraw = () => setShowDraw((s: boolean) => !s);
 
   // When Next is clicked, first show initial certainty modal; after that show AI feedback modal
   const handleNext = () => {
@@ -104,38 +105,25 @@ export default function AITrial({
     });
   };
 
+  const imgRef = (React as any).useRef(null);
+
   return (
     <div className="w-full">
       <div className="max-w-3xl mx-auto">
         <div className="mb-4">
-          <img src={imageSrc} alt="stim" className="w-full h-72 object-contain rounded border" />
-        </div>
-
-        <div className="flex gap-4 justify-center mb-4">
-          <button
-            onClick={() => setDiagnosis('yes')}
-            className={`px-4 py-2 rounded ${
-              diagnosis === 'yes' ? 'bg-accent text-white' : 'bg-gray-100'
-            }`}
-          >
-            igen
-          </button>
-          <button
-            onClick={() => setDiagnosis('no')}
-            className={`px-4 py-2 rounded ${
-              diagnosis === 'no' ? 'bg-accent text-white' : 'bg-gray-100'
-            }`}
-          >
-            nem
-          </button>
-          <button
-            onClick={() => setDiagnosis('ambiguous')}
-            className={`px-4 py-2 rounded ${
-              diagnosis === 'ambiguous' ? 'bg-accent text-white' : 'bg-gray-100'
-            }`}
-          >
-            bizonytalan
-          </button>
+          <div className="relative border rounded-md overflow-hidden" style={{ height: '18rem' }}>
+            <img
+              ref={imgRef}
+              src={imageSrc}
+              alt="stim"
+              className="w-full h-full object-contain block"
+              draggable={false}
+            />
+            {/* canvas overlay is handled inside BBoxTool which will receive this imgRef */}
+            <div className="absolute left-4 top-4 bg-white/60 px-2 py-1 rounded text-sm">
+              baseline (AI)
+            </div>
+          </div>
         </div>
 
         <div className="flex justify-center mb-4">
@@ -150,7 +138,7 @@ export default function AITrial({
             <option value="nincsen tünet">nincsen tünet</option>
           </select>
           <button
-            onClick={handleOpenDraw}
+            onClick={handleToggleDraw}
             disabled={!canDraw}
             className="ml-2 px-3 py-2 bg-gray-100 rounded disabled:opacity-50"
           >
@@ -158,19 +146,39 @@ export default function AITrial({
           </button>
         </div>
 
-        {showDraw && (
-          <div className="mb-4">
-            <BBoxTool
-              src={imageSrc}
-              onChange={(b: any) => {
-                setUserBox(b);
-                // keep the drawn box visible but do not auto-close the drawing UI so user can delete/redo
-                setShowDraw(false);
-              }}
-              overlayBox={aiBox}
-            />
-          </div>
-        )}
+        <div className="flex gap-4 justify-center mb-4">
+          <button
+            onClick={() => canDiagnose && setDiagnosis('yes')}
+            disabled={!canDiagnose}
+            className={`px-4 py-2 rounded ${
+              diagnosis === 'yes' ? 'bg-accent text-white' : 'bg-gray-100'
+            } ${!canDiagnose ? 'opacity-60 cursor-not-allowed' : ''}`}
+          >
+            igen
+          </button>
+          <button
+            onClick={() => canDiagnose && setDiagnosis('no')}
+            disabled={!canDiagnose}
+            className={`px-4 py-2 rounded ${
+              diagnosis === 'no' ? 'bg-accent text-white' : 'bg-gray-100'
+            } ${!canDiagnose ? 'opacity-60 cursor-not-allowed' : ''}`}
+          >
+            nem
+          </button>
+        </div>
+
+        {/* BBoxTool overlay uses the same imgRef so drawing happens on the first image */}
+        <div className="mb-4">
+          <BBoxTool
+            imgRef={imgRef}
+            src={imageSrc}
+            onChange={(b: any) => {
+              setUserBox(b);
+            }}
+            overlayBox={userBox /* show the user's box persistently */}
+            enabled={showDraw && canDraw}
+          />
+        </div>
 
         <div className="flex justify-center">
           <button
