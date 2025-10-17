@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { generateUserID } from '../../utils/generateUserId';
+import { db } from '../../firebase';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { useAppContext } from '../../contexts/AppContext';
 
 type DemographicsForm = {
   age: string;
@@ -32,12 +36,52 @@ export default function Demographics() {
     };
 
   const navigate = useNavigate();
+  const app = useAppContext();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form data:', formData);
-    // navigate to personality page
-    navigate('/DemographicForm/Personality');
+    (async () => {
+      try {
+        console.log('Form data:', formData);
+        // generate userID and randomization
+        const { userID, treatmentGroup, randomizationSeed } = generateUserID();
+
+        // participant document according to spec (minimal fields for now)
+        const participantDoc = {
+          userID,
+          treatmentGroup,
+          randomizationSeed,
+          sessionActive: true,
+          sessionStartTime: serverTimestamp(),
+          currentPhase: 'welcome',
+          createdAt: serverTimestamp(),
+          browserInfo: navigator.userAgent,
+          screenResolution: `${window.screen.width}x${window.screen.height}`,
+          // include demographics
+          age: formData.age,
+          gender: formData.gender,
+          education: formData.education,
+          residence: formData.residence,
+          healthcareQualification: formData.healthcareQualification,
+          completionStatus: 'in_progress',
+        };
+
+        // write to Firestore
+        await setDoc(doc(db, 'participants', userID), participantDoc);
+
+        // update context and sessionStorage via AppContext
+        if (app && app.setUserID) app.setUserID(userID);
+        if (app && app.setTreatmentGroup)
+          app.setTreatmentGroup(treatmentGroup as 'treatment' | 'control');
+        if (app && app.setSessionActive) app.setSessionActive(true);
+
+        // navigate to next part of demographic flow
+        navigate('/DemographicForm/Personality');
+      } catch (err) {
+        console.error('Failed to start session:', err);
+        // keep the user on the page; ideally show UI error (omitted for brevity)
+      }
+    })();
   };
 
   const isFormValid = Object.values(formData).every(value => value !== '');

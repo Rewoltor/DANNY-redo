@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../contexts/AppContext';
+import { db } from '../../firebase';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { calculatePersonalityScores, calculateBig5Major } from '../../utils/testCalculator';
 
 interface PersonalityTestProps {
   assessmentId?: string;
@@ -135,6 +139,7 @@ function PersonalityTest({ assessmentId: _assessmentId, onSubmit }: PersonalityT
   const [responses, setResponses] = React.useState(Array(100).fill(null) as (string | null)[]);
   const [error, setError] = React.useState(false);
   const navigate = useNavigate();
+  const app = useAppContext();
 
   const handleResponseChange = (index: number, value: string) => {
     const responseIndex = page * 10 + index;
@@ -169,8 +174,57 @@ function PersonalityTest({ assessmentId: _assessmentId, onSubmit }: PersonalityT
     } else {
       const cleanResponses: string[] = responses.map((r: string | null) => r || '');
       if (onSubmit) onSubmit(cleanResponses);
-      // Navigate to cognitive page and pass personality responses via state
-      navigate('/DemographicForm/Cognitive', { state: { personalityResponses: cleanResponses } });
+
+      const major = calculateBig5Major(cleanResponses);
+
+      (async () => {
+        try {
+          if (!app || !app.userID) {
+            console.warn('No active participant in context; skipping personality save');
+            navigate('/DemographicForm/Cognitive', {
+              state: { personalityResponses: cleanResponses },
+            });
+            return;
+          }
+
+          // Save raw responses and major traits into a dedicated participant_results collection
+          const resultDocRef = doc(db, 'participant_results', app.userID);
+          const answersDocRef = doc(db, 'answers', app.userID);
+
+          const resultPayload: any = {
+            userID: app.userID,
+            big5: {
+              openness: major.openness,
+              conscientiousness: major.conscientiousness,
+              extroversion: major.extroversion,
+              agreeableness: major.agreeableness,
+              neuroticism: major.neuroticism,
+            },
+            personalitySavedAt: serverTimestamp(),
+          };
+
+          const responsesMap: any = {};
+          cleanResponses.forEach((r, i) => {
+            responsesMap[(i + 1).toString()] = r;
+          });
+
+          const answersPayloadFull: any = {
+            userID: app.userID,
+            personality_responses: responsesMap,
+            personalitySavedAt: serverTimestamp(),
+          };
+
+          // Save raw answers to `answers/{userID}` and results to `participant_results/{userID}` (merge)
+          await setDoc(answersDocRef, answersPayloadFull, { merge: true });
+          await setDoc(resultDocRef, resultPayload, { merge: true });
+        } catch (err) {
+          console.error('Failed to save personality results to participant_results:', err);
+        } finally {
+          navigate('/DemographicForm/Cognitive', {
+            state: { personalityResponses: cleanResponses },
+          });
+        }
+      })();
     }
   };
 

@@ -1,4 +1,8 @@
 import * as React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../contexts/AppContext';
+import { db } from '../../firebase';
+import { doc, updateDoc, serverTimestamp, setDoc } from 'firebase/firestore';
 
 type CognitiveProps = {
   assessmentId?: string;
@@ -19,6 +23,9 @@ export default function Cognitive({
   const [score, setScore] = React.useState(0);
   const [showCompletion, setShowCompletion] = React.useState(false);
   const [iqResponses, setIqResponses] = React.useState({} as Record<string, number | null>);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const app = useAppContext();
 
   React.useEffect(() => {
     // Reset timer whenever the question changes
@@ -66,6 +73,61 @@ export default function Cognitive({
 
   const handleCompleteClick = () => {
     if (onComplete) onComplete(iqResponses, score);
+    (async () => {
+      try {
+        if (!app || !app.userID) {
+          console.warn('No active participant; skipping IQ save');
+          navigate('/pretest');
+          return;
+        }
+
+        // Correct answers as provided
+        const correctAnswers: Record<string, number> = {
+          q1: 1,
+          q2: 2,
+          q3: 3,
+          q4: 5,
+          q5: 1,
+          q6: 6,
+          q7: 4,
+          q8: 3,
+          q9: 6,
+          q10: 3,
+        };
+
+        // compute score based on exact matches
+        let cognitiveScore = 0;
+        for (let i = 1; i <= 10; i++) {
+          const key = `q${i}`;
+          const given = iqResponses[key];
+          if (given !== null && given !== undefined && given === correctAnswers[key])
+            cognitiveScore++;
+        }
+
+        const resultDocRef = doc(db, 'participant_results', app.userID);
+        const answersDocRef = doc(db, 'answers', app.userID);
+
+        const answersPayload: any = { userID: app.userID, cognitive_responses: {} };
+        for (let i = 1; i <= 10; i++) {
+          answersPayload.cognitive_responses[`q${i}`] = iqResponses[`q${i}`] ?? null;
+        }
+        answersPayload.cognitiveSavedAt = serverTimestamp();
+
+        const resultPayload: any = {
+          userID: app.userID,
+          cognitive_score: cognitiveScore,
+          cognitiveSavedAt: serverTimestamp(),
+        };
+
+        // Save raw answers and results (merge)
+        await setDoc(answersDocRef, answersPayload, { merge: true });
+        await setDoc(resultDocRef, resultPayload, { merge: true });
+      } catch (err) {
+        console.error('Failed to save IQ score', err);
+      } finally {
+        navigate('/pretest');
+      }
+    })();
   };
 
   if (showCompletion) {
