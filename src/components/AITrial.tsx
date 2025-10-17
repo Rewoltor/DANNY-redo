@@ -22,9 +22,12 @@ export default function AITrial({
   const [userBox, setUserBox] = (React as any).useState(null);
   const [showDraw, setShowDraw] = (React as any).useState(false);
   const [showAIFeedback, setShowAIFeedback] = (React as any).useState(false);
-  const [showCertainty, setShowCertainty] = (React as any).useState(false);
+  const [showInitialCertainty, setShowInitialCertainty] = (React as any).useState(false);
+  const [showPostCertainty, setShowPostCertainty] = (React as any).useState(false);
   const startTime = (React as any).useRef(null);
   const [revisedDecision, setRevisedDecision] = (React as any).useState(null);
+  const [initialConfidence, setInitialConfidence] = (React as any).useState(null);
+  const [postAiConfidence, setPostAiConfidence] = (React as any).useState(null);
 
   React.useEffect(() => {
     startTime.current = Date.now();
@@ -34,18 +37,28 @@ export default function AITrial({
     setUserBox(null);
     setShowDraw(false);
     setShowAIFeedback(false);
-    setShowCertainty(false);
+    setShowInitialCertainty(false);
+    setShowPostCertainty(false);
     setRevisedDecision(null);
+    setInitialConfidence(null);
+    setPostAiConfidence(null);
   }, [imageSrc]);
 
   const canDraw = dropdown === 'tünet' || dropdown === 'bizonytalan';
-  const canNext =
-    !!diagnosis && !!dropdown && (dropdown === 'nincsen tünet' || (canDraw ? !!userBox : true));
+  // allow proceeding to diagnosis only when dropdown chosen and if tünet requires box it exists
+  const canDiagnose =
+    !!dropdown &&
+    (dropdown === 'nincsen tünet' ||
+      dropdown === 'bizonytalan' ||
+      (dropdown === 'tünet' && !!userBox));
+  const canNext = canDiagnose && !!diagnosis;
 
   const handleOpenDraw = () => setShowDraw(true);
 
+  // When Next is clicked, first show initial certainty modal; after that show AI feedback modal
   const handleNext = () => {
-    setShowAIFeedback(true);
+    // show initial confidence modal before AI
+    setShowInitialCertainty(true);
   };
 
   const handleApplyRevision = (newDecision: string) => {
@@ -54,23 +67,39 @@ export default function AITrial({
 
   const handleContinueAfterAI = () => {
     setShowAIFeedback(false);
-    setShowCertainty(true);
+    // show post-AI certainty
+    setShowPostCertainty(true);
   };
 
-  const handleSelectCertainty = (value: number) => {
+  // initial certainty selected
+  const handleInitialCertaintySelect = (value: number) => {
+    setInitialConfidence(value);
+    setShowInitialCertainty(false);
+    // then show AI feedback modal
+    setShowAIFeedback(true);
+  };
+
+  // post-AI certainty selected -> finalize trial
+  const handlePostCertaintySelect = (value: number) => {
+    setPostAiConfidence(value);
+    setShowPostCertainty(false);
     const end = Date.now();
     const time_sec = startTime.current ? (end - startTime.current) / 1000 : 0;
     const finalDecision = revisedDecision || diagnosis;
     const iou = userBox && aiBox ? calculateIoU(userBox, aiBox) : null;
-    setShowCertainty(false);
+
     onComplete({
-      diagnosis: finalDecision,
-      dropdown,
-      userBox,
-      aiPrediction,
-      aiConfidence,
-      iou,
-      confidence: value,
+      initial_decision: diagnosis,
+      dropdown_choice: dropdown,
+      user_box: userBox,
+      ai_box: aiBox,
+      ai_prediction: aiPrediction,
+      ai_confidence: aiConfidence,
+      bbox_iou: iou,
+      decision_revised_after_ai: revisedDecision ? true : false,
+      final_decision: finalDecision,
+      initial_confidence: initialConfidence,
+      post_ai_confidence: value,
       time_sec,
     });
   };
@@ -135,9 +164,10 @@ export default function AITrial({
               src={imageSrc}
               onChange={(b: any) => {
                 setUserBox(b);
+                // keep the drawn box visible but do not auto-close the drawing UI so user can delete/redo
                 setShowDraw(false);
               }}
-              overlayBox={null}
+              overlayBox={aiBox}
             />
           </div>
         )}
@@ -146,7 +176,9 @@ export default function AITrial({
           <button
             disabled={!canNext}
             onClick={handleNext}
-            className="px-6 py-2 bg-accent text-white rounded disabled:opacity-60"
+            className={`px-6 py-2 rounded ${
+              canNext ? 'bg-accent text-white' : 'bg-gray-300 text-gray-600 cursor-not-allowed'
+            }`}
           >
             Következő
           </button>
@@ -154,6 +186,8 @@ export default function AITrial({
 
         {showAIFeedback && (
           <AIFeedbackModal
+            imageSrc={imageSrc}
+            userBox={userBox}
             aiBox={aiBox}
             aiPrediction={aiPrediction}
             aiConfidence={aiConfidence}
@@ -163,10 +197,17 @@ export default function AITrial({
           />
         )}
 
-        {showCertainty && (
+        {showInitialCertainty && (
           <CertaintyModal
-            onSelect={handleSelectCertainty}
-            onClose={() => setShowCertainty(false)}
+            onSelect={handleInitialCertaintySelect}
+            onClose={() => setShowInitialCertainty(false)}
+          />
+        )}
+
+        {showPostCertainty && (
+          <CertaintyModal
+            onSelect={handlePostCertaintySelect}
+            onClose={() => setShowPostCertainty(false)}
           />
         )}
       </div>
