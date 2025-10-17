@@ -30,9 +30,9 @@ export default function CertaintyModal({
           ))}
         </div>
         <div className="flex justify-end gap-2">
-          <button onClick={() => onClose && onClose()} className="px-3 py-2 rounded bg-gray-200">
+          {/* <button onClick={() => onClose && onClose()} className="px-3 py-2 rounded bg-gray-200">
             Cancel
-          </button>
+          </button> */}
           <button
             onClick={() => value && onSelect(value)}
             disabled={!value}
@@ -40,7 +40,7 @@ export default function CertaintyModal({
               value ? 'bg-accent text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            Select
+            Tovább
           </button>
         </div>
       </div>

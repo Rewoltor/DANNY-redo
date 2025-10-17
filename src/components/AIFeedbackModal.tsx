@@ -100,19 +100,20 @@ export default function AIFeedbackModal({
                 value={decision}
                 onChange={e => setDecision(e.target.value)}
               >
-                <option value={aiPrediction as string}>{aiPrediction as string}</option>
-                <option value="yes">yes</option>
-                <option value="no">no</option>
-                <option value="ambiguous">ambiguous</option>
+                <option value="yes">Igen</option>
+                <option value="no">Nem</option>
               </select>
             </div>
 
             <div className="flex justify-end gap-2">
-              <button onClick={() => onRevise(decision)} className="px-3 py-2 rounded bg-gray-200">
-                Apply
-              </button>
-              <button onClick={onContinue} className="px-3 py-2 rounded bg-accent text-white">
-                Continue
+              <button
+                onClick={() => {
+                  onRevise(decision);
+                  onContinue();
+                }}
+                className="px-3 py-2 rounded bg-accent text-white"
+              >
+                Mehet
               </button>
             </div>
           </div>

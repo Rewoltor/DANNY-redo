@@ -148,7 +148,9 @@ export default function AITrial({
           <button
             onClick={handleToggleDraw}
             disabled={!canDraw}
-            className="ml-2 px-3 py-2 bg-gray-100 rounded disabled:opacity-50"
+            className={`ml-2 px-3 py-2 rounded ${
+              showDraw ? 'bg-green-500 text-white' : 'bg-gray-100'
+            } disabled:opacity-50`}
           >
             Rajzolás
           </button>
@@ -158,18 +160,18 @@ export default function AITrial({
           <button
             onClick={() => canDiagnose && setDiagnosis('yes')}
             disabled={!canDiagnose}
-            className={`px-4 py-2 rounded ${
-              diagnosis === 'yes' ? 'bg-accent text-white' : 'bg-gray-100'
-            } ${!canDiagnose ? 'opacity-60 cursor-not-allowed' : ''}`}
+            className={`px-4 py-2 rounded border ${
+              diagnosis === 'yes' ? 'border-2 border-accent text-accent' : 'border-gray-200'
+            } bg-gray-100 ${!canDiagnose ? 'opacity-60 cursor-not-allowed' : ''}`}
           >
             igen
           </button>
           <button
             onClick={() => canDiagnose && setDiagnosis('no')}
             disabled={!canDiagnose}
-            className={`px-4 py-2 rounded ${
-              diagnosis === 'no' ? 'bg-accent text-white' : 'bg-gray-100'
-            } ${!canDiagnose ? 'opacity-60 cursor-not-allowed' : ''}`}
+            className={`px-4 py-2 rounded border ${
+              diagnosis === 'no' ? 'border-2 border-accent text-accent' : 'border-gray-200'
+            } bg-gray-100 ${!canDiagnose ? 'opacity-60 cursor-not-allowed' : ''}`}
           >
             nem
           </button>

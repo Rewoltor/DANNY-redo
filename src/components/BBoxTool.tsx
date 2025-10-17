@@ -151,21 +151,8 @@ export default function BBoxTool({
       ctx.strokeRect(displayBox.x, displayBox.y, displayBox.width, displayBox.height);
       ctx.fillStyle = 'rgba(16,185,129,0.12)';
       ctx.fillRect(displayBox.x, displayBox.y, displayBox.width, displayBox.height);
-      // draw delete circle top-right
-      const cx = displayBox.x + displayBox.width - 10;
-      const cy = displayBox.y + 10;
-      ctx.setLineDash([]);
-      ctx.fillStyle = 'white';
-      ctx.beginPath();
-      ctx.arc(cx, cy, 10, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.strokeStyle = 'rgba(0,0,0,0.2)';
-      ctx.stroke();
-      ctx.fillStyle = 'black';
-      ctx.font = '12px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('×', cx, cy + 1);
+      // NOTE: the clear/delete control is rendered as an HTML button overlay
+      // (we no longer draw the delete circle/X inside the canvas to avoid duplicates)
     }
   };
 
