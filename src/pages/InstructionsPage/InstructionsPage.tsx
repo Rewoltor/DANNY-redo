@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import tokens from '../../../tokens.json';
+import { useAppContext } from '../../contexts/AppContext';
 
 export default function InstructionsPage() {
   let videoEl: HTMLVideoElement | null = null;
@@ -8,6 +9,7 @@ export default function InstructionsPage() {
   const [watched, setWatched] = React.useState(false);
   const [ackChecked, setAckChecked] = React.useState(false);
   const navigate = useNavigate();
+  const app = useAppContext();
 
   const setVideoRef = (el: HTMLVideoElement | null) => {
     videoEl = el;
@@ -27,8 +29,16 @@ export default function InstructionsPage() {
 
   const handleNext = () => {
     if (!watched) return;
-    // navigate to the personality page by default
-    navigate('/test/baseline');
+    // Decide where to navigate based on existing session/userID
+    const stored = sessionStorage.getItem('studyUserID');
+    const userID = stored || (app && (app.userID as string | undefined));
+    if (!userID) {
+      navigate('/DemographicForm/Demographics');
+      return;
+    }
+
+    // If user has a userID, start at pretest (screening)
+    navigate('/test/pretest');
   };
 
   const accent = tokens?.colors?.accent ?? '#2563eb';
