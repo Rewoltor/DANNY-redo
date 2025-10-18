@@ -28,6 +28,7 @@ import PosttestControlLanding from './pages/test/posttest/PosttestControlLanding
 import PosttestControlTest from './pages/test/posttest/PosttestControlTest';
 import PosttestExperimentalLanding from './pages/test/posttest/PosttestExperimentalLanding';
 import PosttestExperimentalTest from './pages/test/posttest/PosttestExperimentalTest';
+import RedirectPostExperiment from './pages/RedirectPostExperiment';
 import DoneThankYou from './pages/DoneThankYou';
 
 export default function App() {
@@ -66,6 +67,8 @@ export default function App() {
       <Route path="/posttest/control" element={<PosttestControlTest />} />
       <Route path="/posttest/experimental-landing" element={<PosttestExperimentalLanding />} />
       <Route path="/posttest/experimental" element={<PosttestExperimentalTest />} />
+      {/* legacy support: map /post_experiment/* to /posttest/* */}
+      <Route path="/post_experiment/:rest" element={<RedirectPostExperiment />} />
       <Route path="/done" element={<DoneThankYou />} />
       <Route path="/DemographicForm/Cognitive" element={<Cognitive />} />
       <Route path="/InstructionsPage/InstructionsPage" element={<InstructionsPage />} />

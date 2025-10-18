@@ -7,10 +7,23 @@ export default function ExperimentExperimentalLanding() {
   const app = useAppContext();
 
   React.useEffect(() => {
+    // Wait for app to initialize. If app is available and no user id is present, redirect.
     const uid =
       sessionStorage.getItem('studyUserID') || (app && (app.userID as string | undefined));
-    if (!uid) navigate('/DemographicForm/Demographics');
-  }, []);
+    console.debug(
+      'ExperimentExperimentalLanding effect, session uid=',
+      sessionStorage.getItem('studyUserID'),
+      'app.userID=',
+      app && (app.userID as any),
+    );
+    if (app) {
+      if (!uid) {
+        console.warn('No user id found in app or sessionStorage — redirecting to demographics');
+        navigate('/DemographicForm/Demographics');
+      }
+    }
+    // if app is not yet ready, do nothing — the debug panel / Continue anyway button allows proceeding
+  }, [app, navigate]);
 
   return (
     <main className="min-h-screen flex items-center justify-center p-6">
@@ -24,6 +37,36 @@ export default function ExperimentExperimentalLanding() {
           >
             Start experiment (experimental)
           </button>
+        </div>
+        <div className="mt-6 text-left bg-white border p-3 rounded">
+          <h4 className="font-semibold mb-2">Debug / session info</h4>
+          <p className="text-sm">
+            sessionStorage.studyUserID:{' '}
+            <code>{sessionStorage.getItem('studyUserID') || 'null'}</code>
+          </p>
+          <p className="text-sm">
+            app.userID: <code>{(app && (app.userID as any)) || 'null'}</code>
+          </p>
+          <p className="text-sm">
+            app.treatmentGroup: <code>{(app && (app.treatmentGroup as any)) || 'null'}</code>
+          </p>
+          <div className="mt-2">
+            <button
+              onClick={() => navigate('/experiment/experimental')}
+              className="px-3 py-1 bg-gray-200 rounded mr-2"
+            >
+              Continue anyway
+            </button>
+            <button
+              onClick={() => {
+                sessionStorage.removeItem('studyUserID');
+                navigate('/DemographicForm/Demographics');
+              }}
+              className="px-3 py-1 bg-red-100 rounded"
+            >
+              Clear session and restart
+            </button>
+          </div>
         </div>
       </div>
     </main>
