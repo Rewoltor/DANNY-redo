@@ -45,7 +45,7 @@ export default function NoAITrial({
           <button
             onClick={() => setChoice('igen')}
             className={`px-4 py-2 rounded ${
-              choice === 'igen' ? 'bg-accent text-white' : 'bg-gray-100'
+              choice === 'igen' ? 'bg-text text-white' : 'bg-gray-100'
             }`}
           >
             igen
@@ -53,7 +53,7 @@ export default function NoAITrial({
           <button
             onClick={() => setChoice('nem')}
             className={`px-4 py-2 rounded ${
-              choice === 'nem' ? 'bg-accent text-white' : 'bg-gray-100'
+              choice === 'nem' ? 'bg-text text-white' : 'bg-gray-100'
             }`}
           >
             nem
