@@ -137,7 +137,13 @@ export default function AITrial({
         <div className="flex justify-center mb-4">
           <select
             value={dropdown || ''}
-            onChange={e => setDropdown(e.target.value)}
+            onChange={e => {
+              const v = e.target.value;
+              setDropdown(v);
+              // auto-enable drawing when user selects 'tünet'
+              if (v === 'tünet') setShowDraw(true);
+              else setShowDraw(false);
+            }}
             className="p-2 border rounded"
           >
             <option value="">Válassz opciót</option>
