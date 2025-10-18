@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Demographics from './pages/DemographicForm/Demographics';
 import Personality from './pages/DemographicForm/Personality';
 import Cognitive from './pages/DemographicForm/Cognitive';
+import PersonalityLanding from './pages/DemographicForm/PersonalityLanding';
+import CognitiveLanding from './pages/DemographicForm/CognitiveLanding';
 import PreTestLanding from './pages/PreTestLanding';
 import InstructionsPage from './pages/InstructionsPage/InstructionsPage';
 import TestScreenContainer from './components/TestScreenContainer';
@@ -36,6 +38,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/DemographicForm/Demographics" element={<Demographics />} />
+      <Route path="/DemographicForm/PersonalityLanding" element={<PersonalityLanding />} />
       <Route path="/DemographicForm/Personality" element={<Personality />} />
       <Route
         path="/test/baseline"
@@ -70,6 +73,7 @@ export default function App() {
       {/* legacy support: map /post_experiment/* to /posttest/* */}
       <Route path="/post_experiment/:rest" element={<RedirectPostExperiment />} />
       <Route path="/done" element={<DoneThankYou />} />
+      <Route path="/DemographicForm/CognitiveLanding" element={<CognitiveLanding />} />
       <Route path="/DemographicForm/Cognitive" element={<Cognitive />} />
       <Route path="/InstructionsPage/InstructionsPage" element={<InstructionsPage />} />
     </Routes>

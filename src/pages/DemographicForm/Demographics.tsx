@@ -75,8 +75,8 @@ export default function Demographics() {
           app.setTreatmentGroup(treatmentGroup as 'treatment' | 'control');
         if (app && app.setSessionActive) app.setSessionActive(true);
 
-        // navigate to next part of demographic flow
-        navigate('/DemographicForm/Personality');
+        // navigate to next part of demographic flow (landing page before personality)
+        navigate('/DemographicForm/PersonalityLanding');
       } catch (err) {
         console.error('Failed to start session:', err);
         // keep the user on the page; ideally show UI error (omitted for brevity)

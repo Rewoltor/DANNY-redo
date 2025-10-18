@@ -181,7 +181,7 @@ function PersonalityTest({ assessmentId: _assessmentId, onSubmit }: PersonalityT
         try {
           if (!app || !app.userID) {
             console.warn('No active participant in context; skipping personality save');
-            navigate('/DemographicForm/Cognitive', {
+            navigate('/DemographicForm/CognitiveLanding', {
               state: { personalityResponses: cleanResponses },
             });
             return;
@@ -213,7 +213,7 @@ function PersonalityTest({ assessmentId: _assessmentId, onSubmit }: PersonalityT
         } catch (err) {
           console.error('Failed to save personality results to participant_results:', err);
         } finally {
-          navigate('/DemographicForm/Cognitive', {
+          navigate('/DemographicForm/CognitiveLanding', {
             state: { personalityResponses: cleanResponses },
           });
         }
