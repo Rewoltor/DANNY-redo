@@ -5,7 +5,7 @@ export default function PosttestExperimentalTest() {
   return (
     <TestScreenContainer
       phase={'posttest'}
-      mode={'ai'}
+      mode={'noai'}
       poolFolder={'post_experiment'}
       trialsCount={5}
     />
