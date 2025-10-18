@@ -107,8 +107,8 @@ export default function TestScreenContainer({
         onFinish();
       } else {
         // default navigation after finishing trials: route to next phase
-        // basic phase order to advance through: pretest -> baseline -> experiment -> post_experiment -> done
-        const order = ['pretest', 'baseline', 'experiment', 'post_experiment', 'done'];
+        // basic phase order to advance through: pretest -> baseline -> experiment -> posttest -> done
+        const order = ['pretest', 'baseline', 'experiment', 'posttest', 'done'];
         const currentIdx = order.indexOf(effectivePhase);
         const next =
           currentIdx >= 0 && currentIdx < order.length - 1 ? order[currentIdx + 1] : 'done';
