@@ -43,18 +43,20 @@ export default function NoAITrial({
 
         <div className="flex gap-4 justify-center mb-4">
           <button
+            type="button"
             onClick={() => setChoice('igen')}
-            className={`px-4 py-2 rounded ${
-              choice === 'igen' ? 'bg-text text-white' : 'bg-gray-100'
-            }`}
+            className={`px-4 py-2 rounded border ${
+              choice === 'igen' ? 'border-2 border-accent text-accent' : 'border-gray-200'
+            } bg-gray-100`}
           >
             igen
           </button>
           <button
+            type="button"
             onClick={() => setChoice('nem')}
-            className={`px-4 py-2 rounded ${
-              choice === 'nem' ? 'bg-text text-white' : 'bg-gray-100'
-            }`}
+            className={`px-4 py-2 rounded border ${
+              choice === 'nem' ? 'border-2 border-accent text-accent' : 'border-gray-200'
+            } bg-gray-100`}
           >
             nem
           </button>
