@@ -16,7 +16,7 @@ const PersonalityLanding: React.FC = () => {
         We'll now ask a few brief personality questions. Your answers help us analyze results and
         are stored with your participant ID.
       </p>
-      <div className="mb-4 text-sm text-gray-600">Session: {userID || 'No session found'}</div>
+      {/* <div className="mb-4 text-sm text-gray-600">Session: {userID || 'No session found'}</div> */}
 
       <div className="flex gap-4">
         <button
@@ -26,7 +26,7 @@ const PersonalityLanding: React.FC = () => {
           Start Personality
         </button>
 
-        <button
+        {/* <button
           className="px-4 py-2 bg-gray-200 rounded"
           onClick={() => {
             sessionStorage.removeItem('studyUserID');
@@ -34,7 +34,7 @@ const PersonalityLanding: React.FC = () => {
           }}
         >
           Cancel and return
-        </button>
+        </button> */}
       </div>
     </div>
   );

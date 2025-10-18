@@ -21,9 +21,9 @@ export default function CertaintyModal({
             <button
               key={v}
               onClick={() => setValue(v)}
-              className={`px-3 py-2 rounded ${
-                value === v ? 'bg-accent text-white' : 'bg-gray-100'
-              }`}
+              className={`px-3 py-2 rounded border ${
+                value === v ? 'border-2 border-accent text-accent' : 'border-gray-200'
+              } bg-gray-100`}
             >
               {v}
             </button>
