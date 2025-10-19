@@ -7,6 +7,9 @@ export default function AIFeedbackModal({
   aiPrediction,
   aiConfidence,
   iouPercent,
+  // initialDecision is the user's decision before seeing the AI feedback
+  // when available we should preselect that, otherwise fall back to aiPrediction
+  initialDecision,
   onRevise,
   onContinue,
 }: {
@@ -16,10 +19,14 @@ export default function AIFeedbackModal({
   aiPrediction: 'yes' | 'no' | 'ambiguous' | string;
   aiConfidence: number; // 0-1
   iouPercent: number; // 0-100
+  initialDecision?: string | null;
   onRevise: (newDecision: string) => void;
   onContinue: () => void;
 }) {
-  const [decision, setDecision] = React.useState<string>(aiPrediction as string);
+  // Initialize to the user's original decision when available, otherwise fall back to aiPrediction
+  const [decision, setDecision] = React.useState<string>(
+    (initialDecision ?? aiPrediction) as string,
+  );
   const imgRef = (React as any).useRef(null);
   const canvasRef = (React as any).useRef(null);
 

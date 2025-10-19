@@ -205,6 +205,8 @@ export default function AITrial({
             aiPrediction={aiPrediction}
             aiConfidence={aiConfidence}
             iouPercent={userBox && aiBox ? calculateIoU(userBox, aiBox) * 100 : 0}
+            // pass the user's decision prior to AI feedback so the modal preselects it
+            initialDecision={diagnosis}
             onRevise={handleApplyRevision}
             onContinue={handleContinueAfterAI}
           />
