@@ -23,6 +23,21 @@ export default function BBoxTool({
   const [displayBox, setDisplayBox] = (React as any).useState(null); // in displayed pixels
 
   // convert client coords to displayed image coords
+  // helper that extracts clientX/Y from pointer or touch events
+  const getClientFromEvent = (e: any) => {
+    if (!e) return null;
+    if (typeof e.clientX === 'number' && typeof e.clientY === 'number') {
+      return { clientX: e.clientX, clientY: e.clientY };
+    }
+    const touch =
+      e.touches && e.touches[0]
+        ? e.touches[0]
+        : e.changedTouches && e.changedTouches[0]
+        ? e.changedTouches[0]
+        : null;
+    if (touch) return { clientX: touch.clientX, clientY: touch.clientY };
+    return null;
+  };
   const clientToDisplay = (clientX: number, clientY: number) => {
     const img = imgRef.current;
     if (!img) return null;
@@ -100,7 +115,9 @@ export default function BBoxTool({
 
   const handlePointerDown = (e: any) => {
     if (!enabled) return;
-    const p = clientToDisplay(e.clientX, e.clientY);
+    const c = getClientFromEvent(e);
+    if (!c) return;
+    const p = clientToDisplay(c.clientX, c.clientY);
     if (!p) return;
     setStartPoint({ x: p.x, y: p.y });
     setDrawing(true);
@@ -109,9 +126,12 @@ export default function BBoxTool({
   const handlePointerMove = (e: any) => {
     if (!enabled) return;
     if (!drawing || !startPoint) return;
-    const p = clientToDisplay(e.clientX, e.clientY);
+    const c = getClientFromEvent(e);
+    if (!c) return;
+    const p = clientToDisplay(c.clientX, c.clientY);
     if (!p) return;
     const x = Math.min(startPoint.x, p.x);
+    // initialize canvas size to match image display size and devicePixelRatio
     const y = Math.min(startPoint.y, p.y);
     const w = Math.abs(p.x - startPoint.x);
     const h = Math.abs(p.y - startPoint.y);
@@ -119,12 +139,15 @@ export default function BBoxTool({
     draw();
   };
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (e?: any) => {
     if (!displayBox) {
       setDrawing(false);
       setStartPoint(null);
       return;
     }
+    try {
+      e && e.preventDefault && e.preventDefault();
+    } catch (err) {}
     // convert to natural coords
     const nat = displayToNatural(displayBox);
     onChange(nat);
@@ -182,9 +205,38 @@ export default function BBoxTool({
       img.addEventListener && img.addEventListener('load', onLoad);
     } catch (e) {}
     resizeCanvas();
+    // also attach touch listeners directly to the canvas (non-passive) to reliably prevent scrolling while drawing
+    const canvas = canvasRef.current;
+    const touchMoveHandler = (ev: any) => {
+      ev.preventDefault && ev.preventDefault();
+      handlePointerMove(ev);
+    };
+    const touchStartHandler = (ev: any) => {
+      ev.preventDefault && ev.preventDefault();
+      handlePointerDown(ev);
+    };
+    const touchEndHandler = (ev: any) => {
+      ev.preventDefault && ev.preventDefault();
+      handlePointerUp(ev);
+    };
+    try {
+      if (canvas && canvas.addEventListener) {
+        canvas.addEventListener('touchstart', touchStartHandler, { passive: false });
+        canvas.addEventListener('touchmove', touchMoveHandler, { passive: false });
+        canvas.addEventListener('touchend', touchEndHandler, { passive: false });
+        canvas.addEventListener('touchcancel', touchEndHandler, { passive: false });
+      }
+    } catch (e) {}
+
     return () => {
       try {
         img.removeEventListener && img.removeEventListener('load', onLoad);
+        if (canvas && canvas.removeEventListener) {
+          canvas.removeEventListener('touchstart', touchStartHandler as any);
+          canvas.removeEventListener('touchmove', touchMoveHandler as any);
+          canvas.removeEventListener('touchend', touchEndHandler as any);
+          canvas.removeEventListener('touchcancel', touchEndHandler as any);
+        }
       } catch (e) {}
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -216,6 +268,8 @@ export default function BBoxTool({
             width: '100%',
             height: '100%',
             pointerEvents: enabled ? 'auto' : 'none',
+            touchAction: 'none',
+            cursor: enabled ? 'crosshair' : 'default',
           }}
         />
         {/* clear button rendered on top of overlay when a box exists */}
@@ -270,6 +324,8 @@ export default function BBoxTool({
             left: 0,
             top: 0,
             pointerEvents: enabled ? 'auto' : 'none',
+            touchAction: 'none',
+            cursor: enabled ? 'crosshair' : 'default',
           }}
         />
       </div>
