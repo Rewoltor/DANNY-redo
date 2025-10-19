@@ -27,23 +27,48 @@ const AppContext = (React as any).createContext(defaultState);
 export const useAppContext = () => (React as any).useContext(AppContext) as AppState;
 
 export const AppProvider = ({ children }: { children: any }) => {
-  const [userID, setUserIDState] = (React as any).useState(null);
-  const [treatmentGroup, setTreatmentGroupState] = (React as any).useState(null);
-  const [sessionActive, setSessionActiveState] = (React as any).useState(false);
-  const [sessionStartTime, setSessionStartTime] = (React as any).useState(null);
+  // Initialize from sessionStorage synchronously so children see the values on first render.
+  const [userID, setUserIDState] = (React as any).useState(() => {
+    if (typeof window !== 'undefined') return sessionStorage.getItem('studyUserID') || null;
+    return null;
+  });
 
+  const [treatmentGroup, setTreatmentGroupState] = (React as any).useState(() => {
+    if (typeof window !== 'undefined') {
+      const g = sessionStorage.getItem('treatmentGroup');
+      return g === 'treatment' || g === 'control' ? (g as 'treatment' | 'control') : null;
+    }
+    return null;
+  });
+
+  const [sessionActive, setSessionActiveState] = (React as any).useState(() => {
+    if (typeof window !== 'undefined') return !!sessionStorage.getItem('studyUserID');
+    return false;
+  });
+
+  const [sessionStartTime, setSessionStartTime] = (React as any).useState(() => {
+    if (typeof window !== 'undefined') return sessionStorage.getItem('sessionStartTime') || null;
+    return null;
+  });
+
+  // Defensive sync effect: if something changed in sessionStorage after initialization, keep state consistent.
   (React as any).useEffect(() => {
+    if (typeof window === 'undefined') return;
     const stored = sessionStorage.getItem('studyUserID');
     const storedGroup = sessionStorage.getItem('treatmentGroup');
     const storedStart = sessionStorage.getItem('sessionStartTime');
-    if (stored) {
+    if (stored && !userID) {
       setUserIDState(stored);
     }
-    if (storedGroup === 'treatment' || storedGroup === 'control') {
+    if (
+      storedGroup &&
+      !treatmentGroup &&
+      (storedGroup === 'treatment' || storedGroup === 'control')
+    ) {
       setTreatmentGroupState(storedGroup as 'treatment' | 'control');
     }
-    if (storedStart) setSessionStartTime(storedStart);
-    if (stored) setSessionActiveState(true);
+    if (storedStart && !sessionStartTime) setSessionStartTime(storedStart);
+    if (stored && !sessionActive) setSessionActiveState(true);
   }, []);
 
   const setUserID = (id: string | null) => {
