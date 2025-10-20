@@ -122,7 +122,9 @@ export default function Cognitive({
       } catch (err) {
         console.error('Failed to save IQ score', err);
       } finally {
-        navigate('/InstructionsPage/InstructionsPage');
+        // skip pretest: navigate to baseline landing based on user id/treatment
+        const prefix = app && String(app.userID || '').startsWith('1') ? 'experimental' : 'control';
+        navigate(`/baseline/${prefix}-landing`);
       }
     })();
   };

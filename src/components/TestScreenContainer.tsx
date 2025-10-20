@@ -31,10 +31,11 @@ export default function TestScreenContainer({
 
   React.useEffect(() => {
     // load images 1..10 from public/annotation/<effectivePool>
+    // load images 1..trialsCount from public/annotation/<effectivePool>
     const imgs: string[] = [];
-    for (let i = 1; i <= 10; i++) imgs.push(`/annotation/${effectivePool}/${i}.png`);
+    for (let i = 1; i <= trialsCount; i++) imgs.push(`/annotation/${effectivePool}/${i}.png`);
     setImages(imgs);
-  }, [effectivePool]);
+  }, [effectivePool, trialsCount]);
 
   // compute mode from treatmentGroup and phase if not provided
   const effectiveMode: 'ai' | 'noai' = mode
@@ -62,6 +63,8 @@ export default function TestScreenContainer({
       participantID: app.userID,
       phase: effectivePhase,
       trialNum: index + 1,
+      trialType: effectivePhase,
+      trialIndex: index + 1,
       imageID: currentImage,
       timestamp: serverTimestamp(),
       treatmentGroup: app.treatmentGroup,
@@ -81,6 +84,8 @@ export default function TestScreenContainer({
         // keep a trial_{n} entry for easy retrieval
         [`${effectivePhase}_trial_${index + 1}`]: {
           image: currentImage,
+          trialType: effectivePhase,
+          trialIndex: index + 1,
           ...trialData,
           savedAt: serverTimestamp(),
         },
@@ -88,6 +93,8 @@ export default function TestScreenContainer({
         trials_map: {
           [`${effectivePhase}_${index + 1}`]: {
             image: currentImage,
+            trialType: effectivePhase,
+            trialIndex: index + 1,
             ...trialData,
             savedAt: serverTimestamp(),
           },
@@ -107,8 +114,8 @@ export default function TestScreenContainer({
         onFinish();
       } else {
         // default navigation after finishing trials: route to next phase
-        // basic phase order to advance through: pretest -> baseline -> experiment -> posttest -> done
-        const order = ['pretest', 'baseline', 'experiment', 'posttest', 'done'];
+        // basic phase order to advance through: baseline -> experiment -> posttest -> done
+        const order = ['baseline', 'experiment', 'posttest', 'done'];
         const currentIdx = order.indexOf(effectivePhase);
         const next =
           currentIdx >= 0 && currentIdx < order.length - 1 ? order[currentIdx + 1] : 'done';

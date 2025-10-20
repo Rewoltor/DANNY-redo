@@ -43,7 +43,7 @@ export default function PreTestLanding() {
           <p className="mb-2 text-text">90-120 perc összesen:</p>
           <ul className="list-disc ml-6 mb-6 space-y-1 text-text leading-normal">
             <li>Bevezető előadás (20-30 perc)</li>
-            <li>10 gyakorló kép</li>
+            <li>5 gyakorló kép</li>
             <li>Több értékelési szakasz (~30 kép/szakasz)</li>
           </ul>
         </section>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Demographics from './pages/DemographicForm/Demographics';
 import Personality from './pages/DemographicForm/Personality';
@@ -50,7 +50,7 @@ export default function App() {
           <TestScreenContainer phase={undefined as any} mode={'noai'} poolFolder={'baseline'} />
         }
       />
-      <Route path="/pretest" element={<PreTestLanding />} />
+      <Route path="/pretest" element={<Navigate to="/baseline/control-landing" replace />} />
       <Route path="/pretest/control-landing" element={<PretestControlLanding />} />
       <Route path="/pretest/control" element={<PretestControlTest />} />
       <Route path="/pretest/experimental-landing" element={<PretestExperimentalLanding />} />

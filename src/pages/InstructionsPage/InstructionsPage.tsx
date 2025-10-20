@@ -37,8 +37,9 @@ export default function InstructionsPage() {
       return;
     }
 
-    // If user has a userID, start at pretest (screening)
-    navigate('/test/pretest');
+    // If user has a userID, go to baseline landing (skip pretest)
+    const prefix = app && String(app.userID || '').startsWith('1') ? 'experimental' : 'control';
+    navigate(`/baseline/${prefix}-landing`);
   };
 
   const accent = tokens?.colors?.accent ?? '#2563eb';
