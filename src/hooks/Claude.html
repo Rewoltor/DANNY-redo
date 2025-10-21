@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiológiai Képelemzés Kutatás | Medical Imaging Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --muted: #f1f5f9;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --accent: #2563eb;
+            --accent-2: #8b5cf6;
+            --success: #10b981;
+            
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-xl);
+        }
+        
+        /* Header */
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--muted);
+            padding: var(--space-lg) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(248, 250, 252, 0.9);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .badge {
+            background: var(--muted);
+            color: var(--accent);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-lg);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: var(--space-2xl) 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 400px;
+            background: linear-gradient(180deg, var(--surface) 0%, transparent 100%);
+            z-index: -1;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: white;
+            border: 2px solid var(--muted);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-xl);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            animation: fadeInDown 0.6s ease-out;
+        }
+        
+        .hero-badge::before {
+            content: "✓";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.75rem;
+        }
+        
+        h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.25;
+            margin-bottom: var(--space-lg);
+            animation: fadeInUp 0.6s ease-out 0.1s backwards;
+        }
+        
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-2xl);
+            line-height: 1.75;
+            animation: fadeInUp 0.6s ease-out 0.2s backwards;
+        }
+        
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-2xl) 0;
+        }
+        
+        .info-card {
+            background: white;
+            border: 2px solid var(--muted);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        
+        .info-card:nth-child(1) { animation-delay: 0.3s; }
+        .info-card:nth-child(2) { animation-delay: 0.4s; }
+        .info-card:nth-child(3) { animation-delay: 0.5s; }
+        
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+        
+        .info-card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-lg);
+            font-size: 1.5rem;
+        }
+        
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--text);
+        }
+        
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.75;
+            font-size: 0.875rem;
+        }
+        
+        /* Details Section */
+        .details {
+            background: var(--surface);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin: var(--space-2xl) 0;
+            animation: fadeIn 0.6s ease-out 0.6s backwards;
+        }
+        
+        .details h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            color: var(--text);
+        }
+        
+        .detail-list {
+            display: grid;
+            gap: var(--space-lg);
+        }
+        
+        .detail-item {
+            display: flex;
+            gap: var(--space-md);
+            align-items: flex-start;
+        }
+        
+        .detail-item-number {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .detail-item-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            color: var(--text);
+        }
+        
+        .detail-item-content p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.75;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: var(--space-2xl) 0;
+            animation: fadeInUp 0.6s ease-out 0.7s backwards;
+        }
+        
+        .cta-box {
+            background: white;
+            border: 2px solid var(--muted);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .cta-box h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: var(--text);
+        }
+        
+        .cta-box p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            line-height: 1.75;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: white;
+            padding: var(--space-lg) var(--space-2xl);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 1.125rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cta-button:active {
+            transform: translateY(0);
+        }
+        
+        .metadata {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-top: var(--space-lg);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+        
+        .metadata-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: var(--space-xl);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--muted);
+            margin-top: var(--space-2xl);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.875rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+            
+            .metadata {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">Rx</div>
+                <div class="logo-text">
+                    <h1>Radiológiai Kutatás</h1>
+                    <p>Medical Imaging Research Study</p>
+                </div>
+            </div>
+            <div class="badge">TUDOMÁNYOS VIZSGÁLAT</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="hero-background"></div>
+            <div class="hero-badge">
+                Etikailag jóváhagyott kutatás
+            </div>
+            <h2>Vegyen részt egy úttörő<br>radiológiai képelemzési kutatásban</h2>
+            <p>Meghívást kapott egy innovatív tudományos kísérletbe, amely azt vizsgálja, hogyan segítheti a mesterséges intelligencia az orvosi képek értelmezését. Ez egy szigorúan kontrollált, előre regisztrált kutatás, amely hozzájárulhat az orvosi diagnosztika fejlődéséhez.</p>
+        </section>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-icon">🔬</div>
+                <h3>Tudományos Megközelítés</h3>
+                <p>A kutatás előre meghatározott hipotézisekkel, randomizált kísérleti elrendezéssel és statisztikailag megalapozott módszertannal dolgozik. Eredményeink nemzetközi publikációra kerülhetnek.</p>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-card-icon">⏱️</div>
+                <h3>60–90 Perc Időtartam</h3>
+                <p>A vizsgálat egy rövid oktatási résszel kezdődik, majd gyakorlati feladatok és két értékelési fázis következik. Saját tempójában haladhat, szüneteket tarthat.</p>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-card-icon">🎯</div>
+                <h3>Felhasználóközpontú Dizájn</h3>
+                <p>Kiemelten fontosnak tartjuk az Ön élményét. Az interfész intuitív, a feladatok érthetőek, és folyamatosan visszajelzést kap a haladásáról.</p>
+            </div>
+        </div>
+
+        <section class="details">
+            <h3>Mire számíthat a kutatás során?</h3>
+            <div class="detail-list">
+                <div class="detail-item">
+                    <div class="detail-item-number">1</div>
+                    <div class="detail-item-content">
+                        <h4>Oktatási Fázis (20–30 perc)</h4>
+                        <p>Rövid bevezetést kap a radiológiai képek értelmezésébe és az ízületi gyulladás (arthritis) felismerésébe. Részletes útmutatást és példákat kap a feladat megértéséhez.</p>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-item-number">2</div>
+                    <div class="detail-item-content">
+                        <h4>Gyakorlás (10 kép)</h4>
+                        <p>Gyakorló képeken tesztelheti tudását azonnali visszajelzéssel. Ez lehetőséget ad a tanultak alkalmazására és a feladat elsajátítására.</p>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-item-number">3</div>
+                    <div class="detail-item-content">
+                        <h4>Alapfázis (≈30 kép)</h4>
+                        <p>Értékelje az ízületi röntgenképeket önállóan: azonosítsa a gyulladás jeleit, és jelölje be az érintett területeket. Rögzítjük pontosságát és döntési bizalmát.</p>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-item-number">4</div>
+                    <div class="detail-item-content">
+                        <h4>Randomizálás</h4>
+                        <p>Véletlenszerűen kerül besorolásra: vagy mesterséges intelligencia támogatásával, vagy anélkül folytatja a feladatokat. Ez lehetővé teszi az AI hatásának tudományos értékelését.</p>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-item-number">5</div>
+                    <div class="detail-item-content">
+                        <h4>Teszt Fázis (≈30 kép)</h4>
+                        <p>Folytassa az értékelést a randomizáció szerinti feltételekkel. Az AI-támogatást kapók láthatják a modell előrejelzéseit, hőtérképét és átfedési metrikáit, majd módosíthatják döntésüket.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-box">
+                <h3>Készen áll a kezdésre?</h3>
+                <p>A kutatásban való részvétel önkéntes. Adatait bizalmasan kezeljük, és személyazonosságát anonimizáljuk. Bármikor visszaléphet következmények nélkül.</p>
+                <button class="cta-button" onclick="startExperiment()">
+                    Kutatás megkezdése
+                </button>
+                <div class="metadata">
+                    <div class="metadata-item">
+                        <span>⏱️</span>
+                        <span>60–90 perc</span>
+                    </div>
+                    <div class="metadata-item">
+                        <span>📊</span>
+                        <span>~70 összes feladat</span>
+                    </div>
+                    <div class="metadata-item">
+                        <span>🔒</span>
+                        <span>Anonim adatkezelés</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Radiológiai Képelemzés Kutatás | Etikai engedély száma: [XXX-XXXX-XX] | Kapcsolat: research@institution.edu</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">Ez a kutatás megfelel az etikai irányelveknek és az adatvédelmi előírásoknak (GDPR).</p>
+    </footer>
+
+    <script>
+        function startExperiment() {
+            // Store consent timestamp
+            const consentData = {
+                timestamp: new Date().toISOString(),
+                consented: true
+            };
+            
+            // In a real implementation, this would navigate to the tutorial/training phase
+            console.log('Experiment started:', consentData);
+            alert('Köszönjük! A kutatás oktatási fázisa most kezdődik.');
+            
+            // Navigate to next page (replace with actual URL)
+            // window.location.href = '/tutorial';
+        }
+    </script>
+</body>
+</html>

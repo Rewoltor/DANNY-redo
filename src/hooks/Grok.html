@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Assisted Radiology Annotation Study</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --muted: #f1f5f9;
+            --text: #0f172a;
+            --accent: #2563eb;
+            --accent-2: #8b5cf6;
+
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: Menlo, Monaco, monospace;
+
+            --fs-xs: 0.75rem;
+            --fs-sm: 0.875rem;
+            --fs-base: 1rem;
+            --fs-lg: 1.125rem;
+            --fs-xl: 1.25rem;
+            --fs-2xl: 1.5rem;
+            --fs-3xl: 1.875rem;
+            --fs-4xl: 2.25rem;
+
+            --fw-normal: 400;
+            --fw-medium: 500;
+            --fw-semibold: 600;
+            --fw-bold: 700;
+
+            --lh-tight: 1.25;
+            --lh-normal: 1.5;
+            --lh-relaxed: 1.75;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            padding: var(--spacing-2xl) var(--spacing-xl);
+            text-align: center;
+            background-color: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .headline {
+            font-size: var(--fs-4xl);
+            font-weight: var(--fw-bold);
+            line-height: var(--lh-tight);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .subheadline {
+            font-size: var(--fs-2xl);
+            font-weight: var(--fw-semibold);
+            line-height: var(--lh-normal);
+            margin-bottom: var(--spacing-xl);
+            color: var(--accent);
+        }
+
+        .text {
+            font-size: var(--fs-lg);
+            line-height: var(--lh-relaxed);
+            margin-bottom: var(--spacing-xl);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .text p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta-button {
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: var(--spacing-md) var(--spacing-2xl);
+            border-radius: var(--radius-md);
+            font-size: var(--fs-xl);
+            font-weight: var(--fw-semibold);
+            box-shadow: var(--shadow-md);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-2);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            font-size: var(--fs-sm);
+            color: var(--muted-text);
+            margin-top: var(--spacing-xl);
+            border-top: 1px solid var(--muted);
+            padding-top: var(--spacing-md);
+        }
+
+        .section-header {
+            font-size: var(--fs-xl);
+            font-weight: var(--fw-medium);
+            margin-bottom: var(--spacing-sm);
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="headline">Welcome to the AI-Assisted Radiology Annotation Study</h1>
+        <h2 class="subheadline">Contribute to Cutting-Edge Research in Medical Imaging and AI</h2>
+        <div class="text">
+            <p class="section-header">About the Study</p>
+            <p>This prestigious research project, conducted under the guidance of experts in statistics, psychometrics, Bayesian methods, machine learning, and clinical radiology, investigates how AI assistance impacts non-expert annotators' performance in detecting arthritis from joint images. As a participant, you'll help advance our understanding of human-AI collaboration in healthcare, with potential implications for improving diagnostic tools worldwide.</p>
+            
+            <p class="section-header">What to Expect</p>
+            <p>The experiment is designed with your experience in mind, featuring an intuitive interface and clear instructions to ensure a smooth, engaging process. You'll start with a short educational lecture (20-30 minutes) on radiology basics and the annotation task. This is followed by 10 practice cases to build familiarity, then a baseline phase of approximately 30 images where you'll classify arthritis (yes/no) and draw bounding boxes as needed.</p>
+            <p>After the baseline, you'll be randomly assigned to either a control group (no AI) or a treatment group (with AI assistance, including predictions, heatmaps, and overlap metrics). The test phase involves another set of about 30 images. The entire session should take 1-2 hours, and we'll measure factors like accuracy, decision time, and confidence.</p>
+            <p>We'll also collect brief individual measures (e.g., IQ and personality traits via quick assessments) to explore how personal differences influence performance—all handled securely and anonymously.</p>
+            
+            <p class="section-header">Why Participate?</p>
+            <p>Your involvement supports rigorous, publishable science aimed at peer-reviewed journals. This study emphasizes ethical design, pre-specified hypotheses, and advanced statistical analyses (including Bayesian hierarchical models) for reliable insights. Participants like you are key to making healthcare AI more effective and equitable.</p>
+        </div>
+        <button class="cta-button">Proceed to Participation</button>
+        <div class="footer">
+            This study is part of a Master's thesis in sociology, focusing on human-AI interaction in medical domains. All data is confidential and used solely for research purposes.
+        </div>
+    </div>
+</body>
+</html>

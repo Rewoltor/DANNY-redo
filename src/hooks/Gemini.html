@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Image Annotation Research Study</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. Design Tokens & Global Setup --- */
+        :root {
+            --color-primary: #004a99;  /* A deep, trustworthy "academic" blue */
+            --color-primary-light: #e6f0f9;
+            --color-text-primary: #1a202c; /* Near-black for high readability */
+            --color-text-secondary: #4a5568;
+            --color-background: #f7faff;  /* A very light, subtle blue-gray */
+            --color-surface: #ffffff;
+            --color-border: #e2e8f0;
+            
+            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            
+            --shadow-md: 0 4px 10px -2px rgba(0, 74, 153, 0.08), 0 2px 6px -2px rgba(0, 74, 153, 0.05);
+            --shadow-lg: 0 10px 25px -3px rgba(0, 74, 153, 0.1), 0 4px 10px -4px rgba(0, 74, 153, 0.08);
+            
+            --border-radius: 12px;
+            --spacing-md: 1.25rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 2.5rem;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family-sans);
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: var(--spacing-md);
+        }
+
+        /* --- 2. Main Content Card --- */
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: var(--color-surface);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--color-border);
+            padding: var(--spacing-xl);
+        }
+
+        /* --- 3. Typography & Header --- */
+        .header {
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .header h1 {
+            font-size: 1.75rem; /* 28px */
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 0.875rem; /* 14px */
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0.25rem 0 0 0;
+        }
+
+        /* --- 4. Main Body Content --- */
+        .content p {
+            font-size: 1rem; /* 16px */
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .content strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .content h2 {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-top: var(--spacing-lg);
+            margin-bottom: 0.75rem;
+        }
+
+        /* --- 5. Custom Styled List for Study Steps --- */
+        .study-steps {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            counter-reset: step-counter;
+        }
+
+        .study-steps li {
+            position: relative;
+            padding-left: 40px; /* Space for the custom number */
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* The custom-styled number */
+        .study-steps li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            
+            position: absolute;
+            left: 0;
+            top: 0;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            
+            background-color: var(--color-primary-light);
+            color: var(--color-primary);
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .study-steps li strong {
+            display: block;
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        /* --- 6. Call to Action Button --- */
+        .cta-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            
+            background-color: var(--color-primary);
+            color: var(--color-surface);
+            
+            font-size: 1.125rem;
+            font-weight: 600;
+            padding: 0.875rem 1rem;
+            
+            border: none;
+            border-radius: 8px;
+            margin-top: var(--spacing-lg);
+            
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #003a7a; /* Darker blue on hover */
+            box-shadow: var(--shadow-md);
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <header class="header">
+            <h1>Medical Image Annotation Research Study</h1>
+            <p>Centre for Diagnostic Futures</p>
+        </header>
+
+        <div class="content">
+            <p>
+                <strong>Welcome and thank you for your interest.</strong>
+            </p>
+            <p>
+                You are invited to participate in a research study investigating how people analyze medical images. Our goal is to understand how new technologies, such as Artificial Intelligence (AI), can best assist human annotators in diagnostic tasks.
+            </p>
+            <p>
+                Your contribution will help improve the design of future medical systems and enhance diagnostic accuracy.
+            </p>
+
+            <h2>What to Expect</h2>
+            <p>
+                The study consists of several parts and will take approximately <strong>75-90 minutes</strong> to complete.
+            </p>
+
+            <ol class="study-steps">
+                <li>
+                    <strong>Informed Consent</strong>
+                    You will first review an information sheet and provide your consent to participate.
+                </li>
+                <li>
+                    <strong>Cognitive Assessments</strong>
+                    You will complete two brief, standard assessments that measure cognitive and personality traits. This data is crucial for our research and remains strictly anonymous.
+                </li>
+                <li>
+                    <strong>Training & Practice</strong>
+                    You will receive a short (approx. 20-30 minute) training lesson on how to identify features in radiology images (e.g., signs of arthritis) and practice on 10 sample cases.
+                </li>
+                <li>
+                    <strong>Main Annotation Task</strong>
+                    You will analyze several sets of medical images. Your task is to identify if a condition is present and, in some cases, mark the region of interest.
+                </li>
+            </ol>
+            
+            <p style="margin-top: 1.5rem;">
+                All data collected is <strong>strictly confidential and anonymized</strong>. Your responses will be used for research purposes only.
+            </p>
+
+            <a href="#" class="cta-button">Begin Study</a>
+        </div>
+    </main>
+
+</body>
+</html>
