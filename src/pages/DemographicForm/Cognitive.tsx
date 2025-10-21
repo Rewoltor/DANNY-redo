@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../contexts/AppContext';
 import { db } from '../../firebase';
 import { doc, updateDoc, serverTimestamp, setDoc } from 'firebase/firestore';
+import tokens from '../../../tokens.json';
 
 type CognitiveProps = {
   assessmentId?: string;
@@ -123,32 +124,212 @@ export default function Cognitive({
         console.error('Failed to save IQ score', err);
       } finally {
         // skip pretest: navigate to baseline landing based on user id/treatment
-        const prefix = app && String(app.userID || '').startsWith('1') ? 'experimental' : 'control';
-        navigate(`/baseline/${prefix}-landing`);
+        // const prefix = app && String(app.userID || '').startsWith('1') ? 'experimental' : 'control';
+        // navigate(`/baseline/${prefix}-landing`);
+        navigate('../..//InstructionsPage/InstructionsPage');
       }
     })();
   };
 
   if (showCompletion) {
+    // Extract tokens for inline styles
+    const colors = tokens.colors;
+    const shadows = tokens.shadows;
+    const radii = tokens.radii;
+
     return (
-      <div className="min-h-screen bg-bg flex items-center justify-center py-12 px-4 font-sans text-text">
-        <div className="w-full max-w-md bg-surface p-10 md:p-12 rounded-3xl shadow-2xl border border-muted text-center">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-text">Siker!</h1>
-          </div>
-          <div className="space-y-4 text-lg text-text">
-            <p>Köszönjük a részvételt!</p>
-            <p>Küldd be nekünk a tesztet</p>
-          </div>
-          <button
-            className="w-full mt-8 py-3 px-8 text-lg font-semibold text-white bg-accent rounded-lg shadow hover:bg-accent-2 transition duration-300 transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
-            onClick={handleCompleteClick}
-            disabled={isSubmittingFinal}
+      <main
+        className="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8"
+        style={{
+          background: `linear-gradient(135deg, ${colors.bg} 0%, ${colors.surface} 100%)`,
+        }}
+      >
+        <div
+          className="max-w-4xl w-full"
+          style={{
+            backgroundColor: colors.bg,
+            borderRadius: radii.xl,
+            boxShadow: shadows.lg,
+            overflow: 'hidden',
+          }}
+        >
+          {/* Header Section with Gradient */}
+          <div
+            className="px-6 py-12 sm:px-10 sm:py-14 text-center"
+            style={{
+              background: `linear-gradient(135deg, ${colors.accent} 0%, ${colors['accent-2']} 100%)`,
+              color: '#ffffff',
+            }}
           >
-            {isSubmittingFinal ? 'Beküldés...' : 'Beküld'}
-          </button>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#ffffff' }}>
+              Radiológiai képértékelés
+            </h1>
+            <p className="text-lg opacity-90" style={{ color: '#ffffff' }}>
+              Most kezdődik a fő feladat
+            </p>
+          </div>
+
+          {/* Main Content */}
+          <div className="px-6 py-10 sm:px-10 sm:py-12">
+            {/* Tests Completed Card */}
+            <div
+              className="mb-8 p-6 rounded-xl"
+              style={{
+                backgroundColor: colors.surface,
+                border: `1px solid ${colors.muted}`,
+              }}
+            >
+              <div className="flex items-start gap-4">
+                <div
+                  className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg"
+                  style={{ backgroundColor: '#10b981', color: '#ffffff' }}
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-3" style={{ color: colors.text }}>
+                    A pszichológiai tesztek véget értek
+                  </h3>
+                  <p className="leading-relaxed" style={{ color: colors.text, opacity: 0.8 }}>
+                    Köszönjük! A személyiség és kognitív tesztek elkészültek. Most következik a
+                    kutatás fő része: orvosi képek értékelése.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* What's Next Card */}
+            <div
+              className="mb-8 p-6 rounded-xl"
+              style={{
+                backgroundColor: colors.surface,
+                border: `1px solid ${colors.muted}`,
+              }}
+            >
+              <div className="flex items-start gap-4">
+                <div
+                  className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg"
+                  style={{ backgroundColor: colors.accent, color: '#ffffff' }}
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                    />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-4" style={{ color: colors.text }}>
+                    Mi következik?
+                  </h3>
+                  <ul className="space-y-3" style={{ color: colors.text }}>
+                    <li className="flex items-start gap-3">
+                      <svg
+                        className="w-5 h-5 flex-shrink-0 mt-0.5"
+                        style={{ color: colors.accent }}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span>
+                        <strong>Bevezető előadás (5 perc):</strong> megtanulod, hogyan ismerd fel az
+                        artritiszt radiológiai képeken
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <svg
+                        className="w-5 h-5 flex-shrink-0 mt-0.5"
+                        style={{ color: colors.accent }}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span>
+                        <strong>3 rész (3x30 kép):</strong> kipróbálhatod a feladatot
+                        visszajelzéssel
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <svg
+                        className="w-5 h-5 flex-shrink-0 mt-0.5"
+                        style={{ color: colors.accent }}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span>
+                        <strong>Kísérlet vége</strong>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Important Reminder Warning Card */}
+            <div
+              className="mb-8 p-6 rounded-xl border-l-4"
+              style={{
+                backgroundColor: '#fef3c7',
+                borderLeftColor: '#f59e0b',
+                border: '1px solid #fde68a',
+                borderLeft: '4px solid #f59e0b',
+              }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 text-3xl">⚠️</div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold mb-3" style={{ color: '#92400e' }}>
+                    Emlékeztető:
+                  </h3>
+                  <p className="mb-3 font-semibold" style={{ color: '#78350f' }}>
+                    Az egész tesztet egyetlen ülésben, megszakítás nélkül kell elvégezni!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="flex justify-center pt-4">
+              <button
+                onClick={handleCompleteClick}
+                disabled={isSubmittingFinal}
+                className="px-8 py-4 font-bold text-lg rounded-xl transition-all transform hover:scale-105 shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
+                style={{
+                  backgroundColor: isSubmittingFinal ? colors.muted : colors.accent,
+                  color: '#ffffff',
+                }}
+              >
+                {isSubmittingFinal ? 'Betöltés...' : 'Kezdés az előadással →'}
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      </main>
     );
   }
 
