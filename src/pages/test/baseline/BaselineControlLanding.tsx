@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../../contexts/AppContext';
+import tokens from '../../../../tokens.json';
 
 export default function BaselineControlLanding() {
   const navigate = useNavigate();
@@ -13,17 +14,50 @@ export default function BaselineControlLanding() {
   }, []);
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-6">
-      <div className="max-w-2xl w-full text-center">
-        <h1 className="text-2xl font-bold mb-4">baseline control (id starting with 0)</h1>
-        <p className="mb-6">Landing page for control group before baseline test.</p>
-        <div className="flex justify-center">
-          <button
-            onClick={() => navigate('/baseline/control')}
-            className="px-6 py-3 bg-accent text-white rounded"
-          >
-            Start baseline (control)
-          </button>
+    <main
+      className="min-h-screen flex items-center justify-center p-6"
+      style={{ backgroundColor: tokens.colors.bg }}
+    >
+      <div
+        className="w-full max-w-2xl rounded-xl overflow-hidden"
+        style={{ backgroundColor: tokens.colors.surface, boxShadow: tokens.shadows.lg }}
+      >
+        {/* Header */}
+        <div
+          className="px-8 py-6 text-center"
+          style={{
+            background: `linear-gradient(135deg, ${tokens.colors.accent} 0%, ${tokens.colors['accent-2']} 100%)`,
+          }}
+        >
+          <h1 className="text-2xl font-bold text-white">Első feladat feladat 1/3</h1>
+          <p className="text-white/90 mt-1">5 kép</p>
+        </div>
+
+        {/* Content */}
+        <div className="p-6">
+          <p className="text-base mb-6" style={{ color: tokens.colors.text }}>
+            Most 5 képet fogsz értékelni.
+          </p>
+
+          <div className="p-4 rounded-md mb-6" style={{ backgroundColor: tokens.colors.muted }}>
+            <h3 className="font-semibold mb-2" style={{ color: tokens.colors.text }}>
+              ⚠️ Fontos:
+            </h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm" style={{ color: tokens.colors.text }}>
+              <li>Törekedj a maximális pontosságra</li>
+              <li>Gondold át figyelmesen minden döntésedet</li>
+            </ul>
+          </div>
+
+          <div className="flex justify-center">
+            <button
+              onClick={() => navigate('/baseline/control')}
+              className="px-8 py-3 rounded-lg font-semibold text-white"
+              style={{ backgroundColor: tokens.colors.accent, boxShadow: tokens.shadows.md }}
+            >
+              Kezdés →
+            </button>
+          </div>
         </div>
       </div>
     </main>
