@@ -1,7 +1,7 @@
 import * as React from 'react';
 import NoAITrial from './NoAITrial';
 import AITrial from './AITrial';
-import { addDoc, collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAppContext } from '../contexts/AppContext';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -57,10 +57,9 @@ export default function TestScreenContainer({
       console.warn('No userID, skipping save');
       return;
     }
-
-    const trialDoc = {
-      userID: app.userID,
-      participantID: app.userID,
+    // Build a single trial entry that will be merged into the participant document
+    const trialKey = `${effectivePhase}_${index + 1}`;
+    const trialEntry = {
       phase: effectivePhase,
       trialNum: index + 1,
       trialType: effectivePhase,
@@ -69,39 +68,23 @@ export default function TestScreenContainer({
       timestamp: serverTimestamp(),
       treatmentGroup: app.treatmentGroup,
       ...trialData,
-    };
+    } as any;
 
     try {
-      // still keep a trials collection for trial-level logs
-      await addDoc(collection(db, 'trials'), trialDoc);
-
-      // Consolidate per-participant data under participants/{userID}
-      const participantPayload: any = {
-        userID: app.userID,
-        sessionActive: true,
-        currentPhase: effectivePhase,
-        lastTrialAt: serverTimestamp(),
-        // keep a trial_{n} entry for easy retrieval
-        [`${effectivePhase}_trial_${index + 1}`]: {
-          image: currentImage,
-          trialType: effectivePhase,
-          trialIndex: index + 1,
-          ...trialData,
-          savedAt: serverTimestamp(),
-        },
-        // and a trials_list map that groups trials by phase and number (analysis-friendly)
-        trials_map: {
-          [`${effectivePhase}_${index + 1}`]: {
-            image: currentImage,
-            trialType: effectivePhase,
-            trialIndex: index + 1,
-            ...trialData,
-            savedAt: serverTimestamp(),
+      // Merge the trial into participants/{userID}.trials.<trialKey>
+      await setDoc(
+        doc(db, 'participants', app.userID),
+        {
+          userID: app.userID,
+          sessionActive: true,
+          currentPhase: effectivePhase,
+          lastTrialAt: serverTimestamp(),
+          trials: {
+            [trialKey]: trialEntry,
           },
         },
-      };
-
-      await setDoc(doc(db, 'participants', app.userID), participantPayload, { merge: true });
+        { merge: true },
+      );
     } catch (err) {
       console.error('Failed to save trial', err);
     }
