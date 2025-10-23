@@ -89,6 +89,11 @@ export default function AITrial({
     const finalDecision = revisedDecision || diagnosis;
     const iou = userBox && aiBox ? calculateIoU(userBox, aiBox) : null;
 
+    // decision_revised_after_ai should be true only when the user provided
+    // a revised decision that differs from the initial decision
+    const decisionRevised =
+      revisedDecision !== null && revisedDecision !== undefined && revisedDecision !== diagnosis;
+
     onComplete({
       initial_decision: diagnosis,
       dropdown_choice: dropdown,
@@ -97,7 +102,7 @@ export default function AITrial({
       ai_prediction: aiPrediction,
       ai_confidence: aiConfidence,
       bbox_iou: iou,
-      decision_revised_after_ai: revisedDecision ? true : false,
+      decision_revised_after_ai: decisionRevised,
       final_decision: finalDecision,
       initial_confidence: initialConfidence,
       post_ai_confidence: value,
