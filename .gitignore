@@ -52,3 +52,6 @@ next-env.d.ts
 Thumbs.db
 
 node_modules
+
+# Firebase
+secrets.js
