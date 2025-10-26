@@ -145,8 +145,8 @@ export default function AITrial({
             onChange={e => {
               const v = e.target.value;
               setDropdown(v);
-              // auto-enable drawing when user selects 'tünet'
-              if (v === 'tünet') setShowDraw(true);
+              // auto-enable drawing when user selects 'tünet' or 'bizonytalan'
+              if (v === 'tünet' || v === 'bizonytalan') setShowDraw(true);
               else setShowDraw(false);
             }}
             className="p-2 border rounded"
