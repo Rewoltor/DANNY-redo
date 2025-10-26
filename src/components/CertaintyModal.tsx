@@ -20,7 +20,10 @@ export default function CertaintyModal({
           {[1, 2, 3, 4, 5, 6, 7].map(v => (
             <button
               key={v}
-              onClick={() => setValue(v)}
+              onClick={() => {
+                setValue(v);
+                onSelect(v);
+              }}
               className={`px-3 py-2 rounded border ${
                 value === v ? 'border-2 border-accent text-accent' : 'border-gray-200'
               } bg-gray-100`}
@@ -28,20 +31,6 @@ export default function CertaintyModal({
               {v}
             </button>
           ))}
-        </div>
-        <div className="flex justify-end gap-2">
-          {/* <button onClick={() => onClose && onClose()} className="px-3 py-2 rounded bg-gray-200">
-            Cancel
-          </button> */}
-          <button
-            onClick={() => value && onSelect(value)}
-            disabled={!value}
-            className={`px-3 py-2 rounded ${
-              value ? 'bg-accent text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            }`}
-          >
-            Tovább
-          </button>
         </div>
       </div>
     </div>
