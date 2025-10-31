@@ -114,7 +114,7 @@ export default function AITrial({
 
   return (
     <div className="w-full">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <div className="mb-4 flex justify-center">
           <div
             className="relative border rounded-md overflow-hidden inline-block"

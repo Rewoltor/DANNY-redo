@@ -107,7 +107,9 @@ export default function AIFeedbackModal({
             </p>
 
             <div className="mb-4">
-              <label className="block mb-1">Javítsd a döntésed (ha szükséges):</label>
+              <hr className="mt-5 mb-3" />
+              <label className="block font-black">Mi a diagnózis?</label>
+              <label className="block mb-2">Javítsd a döntésed (ha szükséges):</label>
               <select
                 className="w-full p-2 border rounded"
                 value={decision}
