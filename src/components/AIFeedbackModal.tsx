@@ -97,7 +97,7 @@ export default function AIFeedbackModal({
 
           <div className="w-full">
             <p className="mb-2">
-              DoBoV overlap: <strong>{Math.round(iouPercent)}%</strong>
+              Átfedés: <strong>{Math.round(iouPercent)}%</strong>
             </p>
             <p className="mb-2">
               AI predikció: <strong>{aiPrediction}</strong>

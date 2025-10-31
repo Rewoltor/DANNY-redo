@@ -1,6 +1,7 @@
 import * as React from 'react';
 import NoAITrial from './NoAITrial';
 import AITrial from './AITrial';
+import { loadPredictionsCsv, CSVPrediction } from '../utils/predictions';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAppContext } from '../contexts/AppContext';
@@ -24,6 +25,7 @@ export default function TestScreenContainer({
   const navigate = useNavigate();
   const [index, setIndex] = (React as any).useState(0);
   const [images, setImages] = (React as any).useState([]);
+  const [predictionsMap, setPredictionsMap] = React.useState<Record<string, CSVPrediction>>({});
 
   // determine phase from prop or route param
   const effectivePhase = phase || (params.phase as string) || 'baseline';
@@ -36,6 +38,18 @@ export default function TestScreenContainer({
     for (let i = 1; i <= trialsCount; i++) imgs.push(`/annotation/${effectivePool}/${i}.png`);
     setImages(imgs);
   }, [effectivePool, trialsCount]);
+
+  React.useEffect(() => {
+    let mounted = true;
+    loadPredictionsCsv()
+      .then(m => {
+        if (mounted) setPredictionsMap(m);
+      })
+      .catch(() => {});
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   // compute mode from treatmentGroup and phase if not provided
   const effectiveMode: 'ai' | 'noai' = mode
@@ -122,6 +136,17 @@ export default function TestScreenContainer({
     aiConfidence: 0.72,
   };
 
+  // derive CSV-driven ai values for the current image (fallback to example)
+  const basename = currentImage ? currentImage.split('/').pop() || '' : '';
+  const csvEntry = basename ? predictionsMap[basename] : undefined;
+  const aiData = csvEntry
+    ? {
+        aiPrediction: csvEntry.prediction,
+        aiBox: csvEntry.bbox,
+        aiConfidence: csvEntry.probability ?? aiExample.aiConfidence,
+      }
+    : aiExample;
+
   return (
     <div className="min-h-screen p-6 bg-bg">
       <div className="max-w-4xl mx-auto">
@@ -135,9 +160,9 @@ export default function TestScreenContainer({
             key={`trial-${index}`}
             imageSrc={currentImage}
             onComplete={handleComplete}
-            aiPrediction={aiExample.aiPrediction as any}
-            aiBox={aiExample.aiBox as any}
-            aiConfidence={aiExample.aiConfidence}
+            aiPrediction={aiData.aiPrediction as any}
+            aiBox={aiData.aiBox as any}
+            aiConfidence={aiData.aiConfidence}
           />
         )}
       </div>
