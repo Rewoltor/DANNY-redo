@@ -250,10 +250,17 @@ export default function BBoxTool({
 
   if (usingExternal) {
     // only render overlay canvas and clear button positioned absolutely
+    // container size is set via `resizeCanvas()` to match image display size
     return (
       <div
         ref={containerRef as any}
-        style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          pointerEvents: 'auto',
+          overflow: 'visible',
+        }}
       >
         <canvas
           ref={canvasRef}
@@ -323,6 +330,8 @@ export default function BBoxTool({
             position: 'absolute',
             left: 0,
             top: 0,
+            width: '100%',
+            height: '100%',
             pointerEvents: enabled ? 'auto' : 'none',
             touchAction: 'none',
             cursor: enabled ? 'crosshair' : 'default',

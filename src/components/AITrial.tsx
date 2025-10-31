@@ -114,20 +114,19 @@ export default function AITrial({
 
   return (
     <div className="w-full">
-      <div className="max-w-3xl mx-auto">
-        <div className="mb-4">
-          <div className="relative border rounded-md overflow-hidden" style={{ height: '18rem' }}>
+      <div className="max-w-4xl mx-auto">
+        <div className="mb-4 flex justify-center">
+          <div
+            className="relative border rounded-md overflow-hidden inline-block"
+            style={{ lineHeight: 0 }}
+          >
             <img
               ref={imgRef}
               src={imageSrc}
               alt="stim"
-              className="w-full h-full object-contain block"
+              className="block max-w-full h-auto"
               draggable={false}
             />
-            {/* canvas overlay is handled inside BBoxTool which will receive this imgRef */}
-            <div className="absolute left-4 top-4 bg-white/60 px-2 py-1 rounded text-sm">
-              baseline (AI)
-            </div>
             <BBoxTool
               imgRef={imgRef}
               onChange={(b: any) => {

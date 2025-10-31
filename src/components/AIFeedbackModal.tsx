@@ -79,20 +79,26 @@ export default function AIFeedbackModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-      <div className="bg-white rounded p-4 max-w-3xl w-full">
+      <div className="bg-white rounded p-4 inline-block">
         <h3 className="text-lg font-semibold mb-3">AI eredmény</h3>
-        <div className="flex gap-4">
-          <div className="w-2/3">
-            <div className="relative border rounded">
-              <img ref={imgRef} src={imageSrc} alt="stim" className="w-full h-72 object-contain" />
-              <canvas ref={canvasRef} className="absolute top-0 left-0 pointer-events-none" />
-            </div>
-            <p className="mt-2 text-sm">
-              DoBoV overlap: <strong>{Math.round(iouPercent)}%</strong>
-            </p>
+        <div className="flex flex-col gap-4 items-center">
+          <div className="relative border rounded">
+            <img
+              ref={imgRef}
+              src={imageSrc}
+              alt="stim"
+              className="block max-w-full h-auto object-contain"
+            />
+            <canvas
+              ref={canvasRef}
+              className="absolute top-0 left-0 w-full h-full pointer-events-none"
+            />
           </div>
 
-          <div className="w-1/3">
+          <div className="w-full">
+            <p className="mb-2">
+              DoBoV overlap: <strong>{Math.round(iouPercent)}%</strong>
+            </p>
             <p className="mb-2">
               AI predikció: <strong>{aiPrediction}</strong>
             </p>
