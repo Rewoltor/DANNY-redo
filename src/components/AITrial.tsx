@@ -113,7 +113,7 @@ export default function AITrial({
   const imgRef = (React as any).useRef(null);
 
   return (
-    <div className="w-full">
+    <div className="w-full mt-32">
       <div className="max-w-3xl mx-auto">
         <div className="mb-4 flex justify-center">
           <div
