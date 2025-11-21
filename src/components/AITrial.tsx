@@ -3,6 +3,7 @@ import BBoxTool from './BBoxTool';
 import CertaintyModal from './CertaintyModal';
 import AIFeedbackModal from './AIFeedbackModal';
 import { calculateIoU } from '../utils/calculateIoU';
+import type { BinaryResponse } from '../utils/displayHelpers';
 
 export default function AITrial({
   imageSrc,
@@ -13,7 +14,7 @@ export default function AITrial({
 }: {
   imageSrc: string;
   onComplete: (data: any) => void;
-  aiPrediction: 'yes' | 'no' | 'ambiguous' | string;
+  aiPrediction: BinaryResponse | null;
   aiBox: { x: number; y: number; width: number; height: number } | null;
   aiConfidence: number; // 0-1
 }) {
@@ -51,7 +52,7 @@ export default function AITrial({
     (dropdown === 'nincsen tünet' ||
       dropdown === 'bizonytalan' ||
       (dropdown === 'tünet' && !!userBox));
-  const canNext = canDiagnose && !!diagnosis;
+  const canNext = canDiagnose && diagnosis !== null;
 
   const handleOpenDraw = () => setShowDraw(true);
   const handleToggleDraw = () => setShowDraw((s: boolean) => !s);
@@ -62,7 +63,7 @@ export default function AITrial({
     setShowInitialCertainty(true);
   };
 
-  const handleApplyRevision = (newDecision: string) => {
+  const handleApplyRevision = (newDecision: BinaryResponse) => {
     setRevisedDecision(newDecision);
   };
 
@@ -86,7 +87,7 @@ export default function AITrial({
     setShowPostCertainty(false);
     const end = Date.now();
     const time_sec = startTime.current ? (end - startTime.current) / 1000 : 0;
-    const finalDecision = revisedDecision || diagnosis;
+    const finalDecision = revisedDecision ?? diagnosis;
     const iou = userBox && aiBox ? calculateIoU(userBox, aiBox) : null;
 
     // decision_revised_after_ai should be true only when the user provided
@@ -168,19 +169,19 @@ export default function AITrial({
 
         <div className="flex gap-4 justify-center mb-4">
           <button
-            onClick={() => canDiagnose && setDiagnosis('yes')}
+            onClick={() => canDiagnose && setDiagnosis(1)}
             disabled={!canDiagnose}
             className={`px-4 py-2 rounded border ${
-              diagnosis === 'yes' ? 'border-2 border-accent text-accent' : 'border-gray-200'
+              diagnosis === 1 ? 'border-2 border-accent text-accent' : 'border-gray-200'
             } bg-gray-100 ${!canDiagnose ? 'opacity-60 cursor-not-allowed' : ''}`}
           >
             igen
           </button>
           <button
-            onClick={() => canDiagnose && setDiagnosis('no')}
+            onClick={() => canDiagnose && setDiagnosis(0)}
             disabled={!canDiagnose}
             className={`px-4 py-2 rounded border ${
-              diagnosis === 'no' ? 'border-2 border-accent text-accent' : 'border-gray-200'
+              diagnosis === 0 ? 'border-2 border-accent text-accent' : 'border-gray-200'
             } bg-gray-100 ${!canDiagnose ? 'opacity-60 cursor-not-allowed' : ''}`}
           >
             nem

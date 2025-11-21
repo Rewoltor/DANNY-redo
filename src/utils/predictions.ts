@@ -1,5 +1,5 @@
 export type CSVPrediction = {
-  prediction: 'yes' | 'no' | 'ambiguous';
+  prediction: 0 | 1 | null;
   probability: number | null; // 0..1
   bbox: { x: number; y: number; width: number; height: number } | null;
 };
@@ -30,7 +30,7 @@ export async function loadPredictionsCsv(): Promise<Record<string, CSVPrediction
       const xmax = obj.bbox_xmax ?? '';
       const ymax = obj.bbox_ymax ?? '';
 
-      const prediction = predRaw === '1' ? 'pozitív' : predRaw === '0' ? 'negatív' : 'ambiguous';
+      const prediction = predRaw === '1' ? 1 : predRaw === '0' ? 0 : null;
       const probability = probRaw ? parseFloat(probRaw) : null;
 
       let bbox: CSVPrediction['bbox'] = null;

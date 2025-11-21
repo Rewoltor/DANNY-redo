@@ -1,5 +1,6 @@
 import * as React from 'react';
 import CertaintyModal from './CertaintyModal';
+import type { BinaryResponse } from '../utils/displayHelpers';
 
 export default function NoAITrial({
   imageSrc,
@@ -44,18 +45,18 @@ export default function NoAITrial({
         <div className="flex gap-4 justify-center mb-4">
           <button
             type="button"
-            onClick={() => setChoice('igen')}
+            onClick={() => setChoice(1)}
             className={`px-4 py-2 rounded border ${
-              choice === 'igen' ? 'border-2 border-accent text-accent' : 'border-gray-200'
+              choice === 1 ? 'border-2 border-accent text-accent' : 'border-gray-200'
             } bg-gray-100`}
           >
             igen
           </button>
           <button
             type="button"
-            onClick={() => setChoice('nem')}
+            onClick={() => setChoice(0)}
             className={`px-4 py-2 rounded border ${
-              choice === 'nem' ? 'border-2 border-accent text-accent' : 'border-gray-200'
+              choice === 0 ? 'border-2 border-accent text-accent' : 'border-gray-200'
             } bg-gray-100`}
           >
             nem
@@ -64,10 +65,12 @@ export default function NoAITrial({
 
         <div className="flex justify-center">
           <button
-            disabled={!choice}
+            disabled={choice === null}
             onClick={handleNext}
             className={`px-6 py-2 rounded ${
-              choice ? 'bg-accent text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              choice !== null
+                ? 'bg-accent text-white'
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
             Continue

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import type { BinaryResponse } from '../utils/displayHelpers';
+import { getPredictionLabel } from '../utils/displayHelpers';
 
 export default function AIFeedbackModal({
   imageSrc,
@@ -16,16 +18,16 @@ export default function AIFeedbackModal({
   imageSrc: string;
   userBox: { x: number; y: number; width: number; height: number } | null;
   aiBox: { x: number; y: number; width: number; height: number } | null;
-  aiPrediction: 'yes' | 'no' | 'ambiguous' | string;
+  aiPrediction: BinaryResponse | null;
   aiConfidence: number; // 0-1
   iouPercent: number; // 0-100
-  initialDecision?: string | null;
-  onRevise: (newDecision: string) => void;
+  initialDecision?: BinaryResponse | null;
+  onRevise: (newDecision: BinaryResponse) => void;
   onContinue: () => void;
 }) {
   // Initialize to the user's original decision when available, otherwise fall back to aiPrediction
-  const [decision, setDecision] = React.useState<string>(
-    (initialDecision ?? aiPrediction) as string,
+  const [decision, setDecision] = React.useState<BinaryResponse>(
+    (initialDecision ?? aiPrediction ?? 0) as BinaryResponse,
   );
   const imgRef = (React as any).useRef(null);
   const canvasRef = (React as any).useRef(null);
@@ -100,7 +102,8 @@ export default function AIFeedbackModal({
               Átfedés: <strong>{Math.round(iouPercent)}%</strong>
             </p>
             <p className="mb-2">
-              AI predikció: <strong>{aiPrediction}</strong>
+              AI predikció:{' '}
+              <strong>{aiPrediction !== null ? getPredictionLabel(aiPrediction) : 'N/A'}</strong>
             </p>
             <p className="mb-2">
               AI biztonság: <strong>{Math.round(aiConfidence * 100)}%</strong>
@@ -113,10 +116,10 @@ export default function AIFeedbackModal({
               <select
                 className="w-full p-2 border rounded"
                 value={decision}
-                onChange={e => setDecision(e.target.value)}
+                onChange={e => setDecision(Number(e.target.value) as BinaryResponse)}
               >
-                <option value="yes">Igen</option>
-                <option value="no">Nem</option>
+                <option value="1">Igen</option>
+                <option value="0">Nem</option>
               </select>
             </div>
 
