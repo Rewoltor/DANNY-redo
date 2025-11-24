@@ -66,6 +66,13 @@ export default function TestScreenContainer({
 
   const currentImage = images[index % images.length];
 
+  // derive CSV-driven ai values for the current image
+  const basename = currentImage ? currentImage.split('/').pop() || '' : '';
+  let csvPhase = effectivePhase;
+  if (effectivePhase === 'posttest') csvPhase = 'post_experiment';
+  const lookupKey = `${csvPhase}_${basename}`;
+  const csvEntry = predictionsMap[lookupKey];
+
   const saveTrial = async (trialData: any) => {
     if (!app || !app.userID) {
       console.warn('No userID, skipping save');
@@ -82,6 +89,14 @@ export default function TestScreenContainer({
       timestamp: serverTimestamp(),
       treatmentGroup: app.treatmentGroup,
       ...trialData,
+      // Inject CSV data
+      csv_ground_truth_raw: csvEntry?.ground_truth_raw ?? null,
+      csv_ground_truth_binary: csvEntry?.ground_truth_binary ?? null,
+      csv_ai_probability: csvEntry?.probability ?? null,
+      csv_ai_prediction: csvEntry?.prediction ?? null,
+      csv_overlay_path: csvEntry?.overlay ?? null,
+      csv_bbox_area_pct: csvEntry?.bbox_area_pct ?? null,
+      csv_original_image_name: csvEntry?.image_name ?? null,
     } as any;
 
     try {
@@ -136,9 +151,6 @@ export default function TestScreenContainer({
     aiConfidence: 0.72,
   };
 
-  // derive CSV-driven ai values for the current image (fallback to example)
-  const basename = currentImage ? currentImage.split('/').pop() || '' : '';
-  const csvEntry = basename ? predictionsMap[basename] : undefined;
   const aiData = csvEntry
     ? {
         aiPrediction: csvEntry.prediction,

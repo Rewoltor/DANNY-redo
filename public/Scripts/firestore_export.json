@@ -1,0 +1,857 @@
+{
+  "participants": [
+    {
+      "id": "0pytyzzk2w",
+      "userID": "0pytyzzk2w",
+      "treatmentGroup": "control",
+      "randomizationSeed": 476274,
+      "sessionActive": true,
+      "browserInfo": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+      "screenResolution": "1920x1080",
+      "age": "18-25",
+      "gender": "female",
+      "education": "high-school",
+      "residence": "county-seat",
+      "healthcareQualification": "nurse",
+      "completionStatus": "in_progress",
+      "createdAt": {
+        "_seconds": 1763728581,
+        "_nanoseconds": 344000000
+      },
+      "sessionStartTime": {
+        "_seconds": 1763728581,
+        "_nanoseconds": 344000000
+      },
+      "personality": {
+        "responses": {
+          "q71": "",
+          "q70": "",
+          "q73": "",
+          "q72": "",
+          "q75": "",
+          "q74": "",
+          "q77": "",
+          "q76": "",
+          "q79": "",
+          "q78": "",
+          "q80": "",
+          "q82": "",
+          "q81": "",
+          "q84": "",
+          "q83": "",
+          "q86": "",
+          "q85": "",
+          "q88": "",
+          "q87": "",
+          "q89": "",
+          "q91": "",
+          "q90": "",
+          "q93": "",
+          "q92": "",
+          "q95": "",
+          "q94": "",
+          "q97": "",
+          "q96": "",
+          "q11": "2",
+          "q99": "",
+          "q10": "3",
+          "q98": "",
+          "q13": "3",
+          "q12": "2",
+          "q15": "5",
+          "q14": "4",
+          "q17": "4",
+          "q16": "5",
+          "q19": "4",
+          "q18": "4",
+          "q20": "3",
+          "q22": "3",
+          "q21": "2",
+          "q24": "2",
+          "q23": "2",
+          "q26": "2",
+          "q25": "1",
+          "q28": "2",
+          "q27": "2",
+          "q29": "2",
+          "q31": "",
+          "q30": "2",
+          "q33": "",
+          "q32": "",
+          "q35": "",
+          "q34": "",
+          "q37": "",
+          "q36": "",
+          "q39": "",
+          "q38": "",
+          "q40": "",
+          "q42": "",
+          "q41": "",
+          "q44": "",
+          "q43": "",
+          "q46": "",
+          "q45": "",
+          "q48": "",
+          "q47": "",
+          "q49": "",
+          "q51": "",
+          "q50": "",
+          "q53": "",
+          "q52": "",
+          "q55": "",
+          "q54": "",
+          "q57": "",
+          "q56": "",
+          "q100": "",
+          "q59": "",
+          "q58": "",
+          "q1": "3",
+          "q2": "3",
+          "q3": "3",
+          "q4": "4",
+          "q5": "4",
+          "q6": "5",
+          "q7": "5",
+          "q8": "4",
+          "q9": "4",
+          "q60": "",
+          "q62": "",
+          "q61": "",
+          "q64": "",
+          "q63": "",
+          "q66": "",
+          "q65": "",
+          "q68": "",
+          "q67": "",
+          "q69": ""
+        },
+        "savedAt": {
+          "_seconds": 1763728616,
+          "_nanoseconds": 622000000
+        },
+        "big5": {
+          "conscientiousness": null,
+          "openness": null,
+          "neuroticism": null,
+          "extroversion": null,
+          "agreeableness": null
+        }
+      },
+      "cognitive": {
+        "score": 1,
+        "responses": {
+          "q1": 5,
+          "q10": 5,
+          "q2": 5,
+          "q3": 5,
+          "q4": 5,
+          "q5": 5,
+          "q6": 5,
+          "q7": 5,
+          "q8": 5,
+          "q9": 5
+        },
+        "savedAt": {
+          "_seconds": 1763728628,
+          "_nanoseconds": 298000000
+        }
+      },
+      "currentPhase": "posttest",
+      "trials": {
+        "baseline_1": {
+          "phase": "baseline",
+          "trialIndex": 1,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/baseline/1.png",
+          "trialNum": 1,
+          "response": 0,
+          "trialType": "baseline",
+          "confidence": 5,
+          "time_sec": 1.972,
+          "timestamp": {
+            "_seconds": 1763728641,
+            "_nanoseconds": 310000000
+          }
+        },
+        "baseline_2": {
+          "phase": "baseline",
+          "trialIndex": 2,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/baseline/2.png",
+          "trialNum": 2,
+          "response": 0,
+          "trialType": "baseline",
+          "confidence": 5,
+          "time_sec": 2.15,
+          "timestamp": {
+            "_seconds": 1763728643,
+            "_nanoseconds": 559000000
+          }
+        },
+        "baseline_3": {
+          "phase": "baseline",
+          "trialIndex": 3,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/baseline/3.png",
+          "trialNum": 3,
+          "response": 0,
+          "trialType": "baseline",
+          "confidence": 5,
+          "time_sec": 1.525,
+          "timestamp": {
+            "_seconds": 1763728645,
+            "_nanoseconds": 160000000
+          }
+        },
+        "baseline_4": {
+          "phase": "baseline",
+          "trialIndex": 4,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/baseline/4.png",
+          "trialNum": 4,
+          "response": 0,
+          "trialType": "baseline",
+          "confidence": 4,
+          "time_sec": 1.478,
+          "timestamp": {
+            "_seconds": 1763728646,
+            "_nanoseconds": 725000000
+          }
+        },
+        "baseline_5": {
+          "phase": "baseline",
+          "trialIndex": 5,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/baseline/5.png",
+          "trialNum": 5,
+          "response": 0,
+          "trialType": "baseline",
+          "confidence": 4,
+          "time_sec": 1.333,
+          "timestamp": {
+            "_seconds": 1763728648,
+            "_nanoseconds": 153000000
+          }
+        },
+        "experiment_1": {
+          "phase": "experiment",
+          "trialIndex": 1,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/experiment/1.png",
+          "trialNum": 1,
+          "response": 1,
+          "trialType": "experiment",
+          "confidence": 5,
+          "time_sec": 1.774,
+          "timestamp": {
+            "_seconds": 1763728651,
+            "_nanoseconds": 123000000
+          }
+        },
+        "experiment_2": {
+          "phase": "experiment",
+          "trialIndex": 2,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/experiment/2.png",
+          "trialNum": 2,
+          "response": 0,
+          "trialType": "experiment",
+          "confidence": 4,
+          "time_sec": 1.292,
+          "timestamp": {
+            "_seconds": 1763728652,
+            "_nanoseconds": 509000000
+          }
+        },
+        "experiment_3": {
+          "phase": "experiment",
+          "trialIndex": 3,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/experiment/3.png",
+          "trialNum": 3,
+          "response": 1,
+          "trialType": "experiment",
+          "confidence": 4,
+          "time_sec": 1.476,
+          "timestamp": {
+            "_seconds": 1763728654,
+            "_nanoseconds": 68000000
+          }
+        },
+        "experiment_4": {
+          "phase": "experiment",
+          "trialIndex": 4,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/experiment/4.png",
+          "trialNum": 4,
+          "response": 0,
+          "trialType": "experiment",
+          "confidence": 4,
+          "time_sec": 1.285,
+          "timestamp": {
+            "_seconds": 1763728655,
+            "_nanoseconds": 448000000
+          }
+        },
+        "experiment_5": {
+          "phase": "experiment",
+          "trialIndex": 5,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/experiment/5.png",
+          "trialNum": 5,
+          "response": 1,
+          "trialType": "experiment",
+          "confidence": 4,
+          "time_sec": 1.254,
+          "timestamp": {
+            "_seconds": 1763728656,
+            "_nanoseconds": 785000000
+          }
+        },
+        "posttest_1": {
+          "phase": "posttest",
+          "trialIndex": 1,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/post_experiment/1.png",
+          "trialNum": 1,
+          "response": 0,
+          "trialType": "posttest",
+          "confidence": 4,
+          "time_sec": 1.627,
+          "timestamp": {
+            "_seconds": 1763728659,
+            "_nanoseconds": 278000000
+          }
+        },
+        "posttest_2": {
+          "phase": "posttest",
+          "trialIndex": 2,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/post_experiment/2.png",
+          "trialNum": 2,
+          "response": 1,
+          "trialType": "posttest",
+          "confidence": 4,
+          "time_sec": 1.695,
+          "timestamp": {
+            "_seconds": 1763728661,
+            "_nanoseconds": 54000000
+          }
+        },
+        "posttest_3": {
+          "phase": "posttest",
+          "trialIndex": 3,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/post_experiment/3.png",
+          "trialNum": 3,
+          "response": 0,
+          "trialType": "posttest",
+          "confidence": 5,
+          "time_sec": 1.416,
+          "timestamp": {
+            "_seconds": 1763728662,
+            "_nanoseconds": 543000000
+          }
+        },
+        "posttest_4": {
+          "phase": "posttest",
+          "trialIndex": 4,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/post_experiment/4.png",
+          "trialNum": 4,
+          "response": 1,
+          "trialType": "posttest",
+          "confidence": 4,
+          "time_sec": 1.46,
+          "timestamp": {
+            "_seconds": 1763728664,
+            "_nanoseconds": 87000000
+          }
+        },
+        "posttest_5": {
+          "phase": "posttest",
+          "trialIndex": 5,
+          "treatmentGroup": "control",
+          "imageID": "/annotation/post_experiment/5.png",
+          "trialNum": 5,
+          "response": 0,
+          "trialType": "posttest",
+          "confidence": 4,
+          "time_sec": 1.158,
+          "timestamp": {
+            "_seconds": 1763728665,
+            "_nanoseconds": 384000000
+          }
+        }
+      },
+      "lastTrialAt": {
+        "_seconds": 1763728665,
+        "_nanoseconds": 384000000
+      }
+    },
+    {
+      "id": "1w1vxaa4fp",
+      "userID": "1w1vxaa4fp",
+      "treatmentGroup": "treatment",
+      "randomizationSeed": 822228,
+      "sessionActive": true,
+      "browserInfo": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+      "screenResolution": "1920x1080",
+      "age": "18-25",
+      "gender": "male",
+      "education": "masters",
+      "residence": "budapest",
+      "healthcareQualification": "none",
+      "completionStatus": "in_progress",
+      "createdAt": {
+        "_seconds": 1763726398,
+        "_nanoseconds": 256000000
+      },
+      "sessionStartTime": {
+        "_seconds": 1763726398,
+        "_nanoseconds": 256000000
+      },
+      "personality": {
+        "responses": {
+          "q71": "",
+          "q70": "",
+          "q73": "",
+          "q72": "",
+          "q75": "",
+          "q74": "",
+          "q77": "",
+          "q76": "",
+          "q79": "",
+          "q78": "",
+          "q80": "",
+          "q82": "",
+          "q81": "",
+          "q84": "",
+          "q83": "",
+          "q86": "",
+          "q85": "",
+          "q88": "",
+          "q87": "",
+          "q89": "",
+          "q91": "",
+          "q90": "",
+          "q93": "",
+          "q92": "",
+          "q95": "",
+          "q94": "",
+          "q97": "",
+          "q96": "",
+          "q11": "4",
+          "q99": "",
+          "q10": "3",
+          "q98": "",
+          "q13": "4",
+          "q12": "4",
+          "q15": "3",
+          "q14": "4",
+          "q17": "2",
+          "q16": "2",
+          "q19": "2",
+          "q18": "1",
+          "q20": "3",
+          "q22": "4",
+          "q21": "3",
+          "q24": "5",
+          "q23": "4",
+          "q26": "2",
+          "q25": "2",
+          "q28": "3",
+          "q27": "3",
+          "q29": "4",
+          "q31": "",
+          "q30": "5",
+          "q33": "",
+          "q32": "",
+          "q35": "",
+          "q34": "",
+          "q37": "",
+          "q36": "",
+          "q39": "",
+          "q38": "",
+          "q40": "",
+          "q42": "",
+          "q41": "",
+          "q44": "",
+          "q43": "",
+          "q46": "",
+          "q45": "",
+          "q48": "",
+          "q47": "",
+          "q49": "",
+          "q51": "",
+          "q50": "",
+          "q53": "",
+          "q52": "",
+          "q55": "",
+          "q54": "",
+          "q57": "",
+          "q56": "",
+          "q100": "",
+          "q59": "",
+          "q58": "",
+          "q1": "3",
+          "q2": "3",
+          "q3": "3",
+          "q4": "4",
+          "q5": "4",
+          "q6": "3",
+          "q7": "3",
+          "q8": "2",
+          "q9": "3",
+          "q60": "",
+          "q62": "",
+          "q61": "",
+          "q64": "",
+          "q63": "",
+          "q66": "",
+          "q65": "",
+          "q68": "",
+          "q67": "",
+          "q69": ""
+        },
+        "savedAt": {
+          "_seconds": 1763726431,
+          "_nanoseconds": 199000000
+        },
+        "big5": {
+          "conscientiousness": null,
+          "openness": null,
+          "neuroticism": null,
+          "extroversion": null,
+          "agreeableness": null
+        }
+      },
+      "cognitive": {
+        "score": 2,
+        "responses": {
+          "q1": 5,
+          "q10": 6,
+          "q2": 6,
+          "q3": 4,
+          "q4": 5,
+          "q5": 4,
+          "q6": 5,
+          "q7": 3,
+          "q8": 5,
+          "q9": 6
+        },
+        "savedAt": {
+          "_seconds": 1763726444,
+          "_nanoseconds": 697000000
+        }
+      },
+      "currentPhase": "posttest",
+      "trials": {
+        "baseline_1": {
+          "phase": "baseline",
+          "trialIndex": 1,
+          "treatmentGroup": "treatment",
+          "imageID": "/annotation/baseline/1.png",
+          "trialNum": 1,
+          "response": 0,
+          "trialType": "baseline",
+          "confidence": 6,
+          "time_sec": 2.486,
+          "timestamp": {
+            "_seconds": 1763726490,
+            "_nanoseconds": 271000000
+          }
+        },
+        "baseline_2": {
+          "phase": "baseline",
+          "trialIndex": 2,
+          "treatmentGroup": "treatment",
+          "imageID": "/annotation/baseline/2.png",
+          "trialNum": 2,
+          "response": 0,
+          "trialType": "baseline",
+          "confidence": 6,
+          "time_sec": 1.438,
+          "timestamp": {
+            "_seconds": 1763726491,
+            "_nanoseconds": 822000000
+          }
+        },
+        "baseline_3": {
+          "phase": "baseline",
+          "trialIndex": 3,
+          "treatmentGroup": "treatment",
+          "imageID": "/annotation/baseline/3.png",
+          "trialNum": 3,
+          "response": 0,
+          "trialType": "baseline",
+          "confidence": 5,
+          "time_sec": 1.933,
+          "timestamp": {
+            "_seconds": 1763726493,
+            "_nanoseconds": 845000000
+          }
+        },
+        "baseline_4": {
+          "phase": "baseline",
+          "trialIndex": 4,
+          "treatmentGroup": "treatment",
+          "imageID": "/annotation/baseline/4.png",
+          "trialNum": 4,
+          "response": 1,
+          "trialType": "baseline",
+          "confidence": 4,
+          "time_sec": 2.099,
+          "timestamp": {
+            "_seconds": 1763726496,
+            "_nanoseconds": 44000000
+          }
+        },
+        "baseline_5": {
+          "phase": "baseline",
+          "trialIndex": 5,
+          "treatmentGroup": "treatment",
+          "imageID": "/annotation/baseline/5.png",
+          "trialNum": 5,
+          "response": 1,
+          "trialType": "baseline",
+          "confidence": 4,
+          "time_sec": 1.626,
+          "timestamp": {
+            "_seconds": 1763726497,
+            "_nanoseconds": 774000000
+          }
+        },
+        "experiment_1": {
+          "phase": "experiment",
+          "trialIndex": 1,
+          "dropdown_choice": "tünet",
+          "imageID": "/annotation/experiment/1.png",
+          "trialType": "experiment",
+          "initial_confidence": 7,
+          "post_ai_confidence": 7,
+          "ai_confidence": 0.13338840007781982,
+          "time_sec": 6.715,
+          "ai_box": null,
+          "ai_prediction": 0,
+          "decision_revised_after_ai": false,
+          "treatmentGroup": "treatment",
+          "final_decision": 0,
+          "trialNum": 1,
+          "user_box": {
+            "width": 111,
+            "x": 26,
+            "y": 109,
+            "height": 50
+          },
+          "initial_decision": 0,
+          "bbox_iou": null,
+          "timestamp": {
+            "_seconds": 1763726540,
+            "_nanoseconds": 774000000
+          }
+        },
+        "experiment_2": {
+          "phase": "experiment",
+          "trialIndex": 2,
+          "dropdown_choice": "tünet",
+          "imageID": "/annotation/experiment/2.png",
+          "trialType": "experiment",
+          "initial_confidence": 7,
+          "post_ai_confidence": 7,
+          "ai_confidence": 0.004932005,
+          "time_sec": 25.993,
+          "ai_box": null,
+          "ai_prediction": 0,
+          "decision_revised_after_ai": true,
+          "treatmentGroup": "treatment",
+          "final_decision": 0,
+          "trialNum": 2,
+          "user_box": {
+            "width": 174,
+            "x": 33,
+            "y": 102,
+            "height": 43
+          },
+          "initial_decision": 1,
+          "bbox_iou": null,
+          "timestamp": {
+            "_seconds": 1763726566,
+            "_nanoseconds": 861000000
+          }
+        },
+        "experiment_3": {
+          "phase": "experiment",
+          "trialIndex": 3,
+          "dropdown_choice": "nincsen tünet",
+          "imageID": "/annotation/experiment/3.png",
+          "trialType": "experiment",
+          "initial_confidence": 6,
+          "post_ai_confidence": 7,
+          "ai_confidence": 0.9910439252853394,
+          "time_sec": 22.518,
+          "ai_box": {
+            "width": 159,
+            "x": 0,
+            "y": 46,
+            "height": 155
+          },
+          "ai_prediction": 1,
+          "decision_revised_after_ai": false,
+          "treatmentGroup": "treatment",
+          "final_decision": 0,
+          "trialNum": 3,
+          "user_box": null,
+          "initial_decision": 0,
+          "bbox_iou": null,
+          "timestamp": {
+            "_seconds": 1763726589,
+            "_nanoseconds": 476000000
+          }
+        },
+        "experiment_4": {
+          "phase": "experiment",
+          "trialIndex": 4,
+          "dropdown_choice": "nincsen tünet",
+          "imageID": "/annotation/experiment/4.png",
+          "trialType": "experiment",
+          "initial_confidence": 5,
+          "post_ai_confidence": 7,
+          "ai_confidence": 0.9864799380302429,
+          "time_sec": 30.24,
+          "ai_box": {
+            "width": 157,
+            "x": 0,
+            "y": 35,
+            "height": 164
+          },
+          "ai_prediction": 1,
+          "decision_revised_after_ai": true,
+          "treatmentGroup": "treatment",
+          "final_decision": 1,
+          "trialNum": 4,
+          "user_box": null,
+          "initial_decision": 0,
+          "bbox_iou": null,
+          "timestamp": {
+            "_seconds": 1763726619,
+            "_nanoseconds": 803000000
+          }
+        },
+        "experiment_5": {
+          "phase": "experiment",
+          "trialIndex": 5,
+          "dropdown_choice": "tünet",
+          "imageID": "/annotation/experiment/5.png",
+          "trialType": "experiment",
+          "initial_confidence": 7,
+          "post_ai_confidence": 7,
+          "ai_confidence": 0.999786913,
+          "time_sec": 19.481,
+          "ai_box": {
+            "width": 168,
+            "x": 0,
+            "y": 46,
+            "height": 148
+          },
+          "ai_prediction": 1,
+          "decision_revised_after_ai": false,
+          "treatmentGroup": "treatment",
+          "final_decision": 1,
+          "trialNum": 5,
+          "user_box": {
+            "width": 93,
+            "x": 114,
+            "y": 94,
+            "height": 42
+          },
+          "initial_decision": 1,
+          "bbox_iou": 0.08557844690966719,
+          "timestamp": {
+            "_seconds": 1763726639,
+            "_nanoseconds": 380000000
+          }
+        },
+        "posttest_1": {
+          "phase": "posttest",
+          "trialIndex": 1,
+          "treatmentGroup": "treatment",
+          "imageID": "/annotation/post_experiment/1.png",
+          "trialNum": 1,
+          "response": 0,
+          "trialType": "posttest",
+          "confidence": 5,
+          "time_sec": 1.926,
+          "timestamp": {
+            "_seconds": 1763726642,
+            "_nanoseconds": 228000000
+          }
+        },
+        "posttest_2": {
+          "phase": "posttest",
+          "trialIndex": 2,
+          "treatmentGroup": "treatment",
+          "imageID": "/annotation/post_experiment/2.png",
+          "trialNum": 2,
+          "response": 0,
+          "trialType": "posttest",
+          "confidence": 6,
+          "time_sec": 1.687,
+          "timestamp": {
+            "_seconds": 1763726644,
+            "_nanoseconds": 0
+          }
+        },
+        "posttest_3": {
+          "phase": "posttest",
+          "trialIndex": 3,
+          "treatmentGroup": "treatment",
+          "imageID": "/annotation/post_experiment/3.png",
+          "trialNum": 3,
+          "response": 1,
+          "trialType": "posttest",
+          "confidence": 4,
+          "time_sec": 10.945,
+          "timestamp": {
+            "_seconds": 1763726655,
+            "_nanoseconds": 26000000
+          }
+        },
+        "posttest_4": {
+          "phase": "posttest",
+          "trialIndex": 4,
+          "treatmentGroup": "treatment",
+          "imageID": "/annotation/post_experiment/4.png",
+          "trialNum": 4,
+          "response": 1,
+          "trialType": "posttest",
+          "confidence": 3,
+          "time_sec": 1.572,
+          "timestamp": {
+            "_seconds": 1763726656,
+            "_nanoseconds": 688000000
+          }
+        },
+        "posttest_5": {
+          "phase": "posttest",
+          "trialIndex": 5,
+          "treatmentGroup": "treatment",
+          "imageID": "/annotation/post_experiment/5.png",
+          "trialNum": 5,
+          "response": 0,
+          "trialType": "posttest",
+          "confidence": 5,
+          "time_sec": 7.567,
+          "timestamp": {
+            "_seconds": 1763726664,
+            "_nanoseconds": 357000000
+          }
+        }
+      },
+      "lastTrialAt": {
+        "_seconds": 1763726664,
+        "_nanoseconds": 357000000
+      }
+    }
+  ]
+}
