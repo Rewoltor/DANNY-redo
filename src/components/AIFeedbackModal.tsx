@@ -106,7 +106,7 @@ export default function AIFeedbackModal({
               <strong>{aiPrediction !== null ? getPredictionLabel(aiPrediction) : 'N/A'}</strong>
             </p>
             <p className="mb-2">
-              AI biztonság (%): <strong>{Math.round(aiConfidence * 100)}%</strong>
+              AI biztonság: <strong>{Math.round(aiConfidence * 100)}%</strong>
             </p>
 
             <div className="mb-4">

@@ -1,26 +1,520 @@
 {
   "participants": [
     {
-      "id": "0pytyzzk2w",
-      "userID": "0pytyzzk2w",
+      "id": "0spcrypuvm",
+      "userID": "0spcrypuvm",
       "treatmentGroup": "control",
-      "randomizationSeed": 476274,
+      "randomizationSeed": 280083,
       "sessionActive": true,
       "browserInfo": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
       "screenResolution": "1920x1080",
-      "age": "18-25",
+      "age": "26-35",
       "gender": "female",
       "education": "high-school",
       "residence": "county-seat",
       "healthcareQualification": "nurse",
       "completionStatus": "in_progress",
       "createdAt": {
-        "_seconds": 1763728581,
-        "_nanoseconds": 344000000
+        "_seconds": 1763987492,
+        "_nanoseconds": 115000000
       },
       "sessionStartTime": {
-        "_seconds": 1763728581,
-        "_nanoseconds": 344000000
+        "_seconds": 1763987492,
+        "_nanoseconds": 115000000
+      },
+      "personality": {
+        "responses": {
+          "q71": "",
+          "q70": "",
+          "q73": "",
+          "q72": "",
+          "q75": "",
+          "q74": "",
+          "q77": "",
+          "q76": "",
+          "q79": "",
+          "q78": "",
+          "q80": "",
+          "q82": "",
+          "q81": "",
+          "q84": "",
+          "q83": "",
+          "q86": "",
+          "q85": "",
+          "q88": "",
+          "q87": "",
+          "q89": "",
+          "q91": "",
+          "q90": "",
+          "q93": "",
+          "q92": "",
+          "q95": "",
+          "q94": "",
+          "q97": "",
+          "q96": "",
+          "q11": "3",
+          "q99": "",
+          "q10": "4",
+          "q98": "",
+          "q13": "3",
+          "q12": "2",
+          "q15": "5",
+          "q14": "4",
+          "q17": "4",
+          "q16": "5",
+          "q19": "2",
+          "q18": "3",
+          "q20": "2",
+          "q22": "3",
+          "q21": "3",
+          "q24": "3",
+          "q23": "3",
+          "q26": "3",
+          "q25": "3",
+          "q28": "3",
+          "q27": "3",
+          "q29": "3",
+          "q31": "",
+          "q30": "3",
+          "q33": "",
+          "q32": "",
+          "q35": "",
+          "q34": "",
+          "q37": "",
+          "q36": "",
+          "q39": "",
+          "q38": "",
+          "q40": "",
+          "q42": "",
+          "q41": "",
+          "q44": "",
+          "q43": "",
+          "q46": "",
+          "q45": "",
+          "q48": "",
+          "q47": "",
+          "q49": "",
+          "q51": "",
+          "q50": "",
+          "q53": "",
+          "q52": "",
+          "q55": "",
+          "q54": "",
+          "q57": "",
+          "q56": "",
+          "q100": "",
+          "q59": "",
+          "q58": "",
+          "q1": "2",
+          "q2": "2",
+          "q3": "3",
+          "q4": "4",
+          "q5": "5",
+          "q6": "4",
+          "q7": "3",
+          "q8": "2",
+          "q9": "3",
+          "q60": "",
+          "q62": "",
+          "q61": "",
+          "q64": "",
+          "q63": "",
+          "q66": "",
+          "q65": "",
+          "q68": "",
+          "q67": "",
+          "q69": ""
+        },
+        "savedAt": {
+          "_seconds": 1763987526,
+          "_nanoseconds": 761000000
+        },
+        "big5": {
+          "conscientiousness": null,
+          "openness": null,
+          "neuroticism": null,
+          "extroversion": null,
+          "agreeableness": null
+        }
+      },
+      "cognitive": {
+        "score": 3,
+        "responses": {
+          "q1": 5,
+          "q10": 5,
+          "q2": 2,
+          "q3": 5,
+          "q4": 6,
+          "q5": 5,
+          "q6": 1,
+          "q7": 4,
+          "q8": 5,
+          "q9": 6
+        },
+        "savedAt": {
+          "_seconds": 1763987541,
+          "_nanoseconds": 253000000
+        }
+      },
+      "currentPhase": "posttest",
+      "trials": {
+        "baseline_1": {
+          "phase": "baseline",
+          "trialIndex": 1,
+          "imageID": "/annotation/baseline/1.png",
+          "trialType": "baseline",
+          "confidence": 5,
+          "csv_original_image_name": "dataset/test/0/9545822R.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 2.292,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 48.4515,
+          "csv_overlay_path": "predicted/0/9545822R_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "control",
+          "trialNum": 1,
+          "response": 0,
+          "csv_ai_probability": 0.69184428,
+          "timestamp": {
+            "_seconds": 1763987548,
+            "_nanoseconds": 786000000
+          }
+        },
+        "baseline_2": {
+          "phase": "baseline",
+          "trialIndex": 2,
+          "imageID": "/annotation/baseline/2.png",
+          "trialType": "baseline",
+          "confidence": 3,
+          "csv_original_image_name": "dataset/test/0/9384119R.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.43,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 0,
+          "csv_overlay_path": "predicted/0/9384119R_gradcam.png",
+          "csv_ai_prediction": 0,
+          "treatmentGroup": "control",
+          "trialNum": 2,
+          "response": 1,
+          "csv_ai_probability": 0.03749398,
+          "timestamp": {
+            "_seconds": 1763987550,
+            "_nanoseconds": 336000000
+          }
+        },
+        "baseline_3": {
+          "phase": "baseline",
+          "trialIndex": 3,
+          "imageID": "/annotation/baseline/3.png",
+          "trialType": "baseline",
+          "confidence": 1,
+          "csv_original_image_name": "dataset/test/2/9076313R.png",
+          "csv_ground_truth_raw": "2",
+          "time_sec": 2.501,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 75.3548,
+          "csv_overlay_path": "predicted/2/9076313R_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "control",
+          "trialNum": 3,
+          "response": 0,
+          "csv_ai_probability": 0.99932158,
+          "timestamp": {
+            "_seconds": 1763987552,
+            "_nanoseconds": 933000000
+          }
+        },
+        "baseline_4": {
+          "phase": "baseline",
+          "trialIndex": 4,
+          "imageID": "/annotation/baseline/4.png",
+          "trialType": "baseline",
+          "confidence": 3,
+          "csv_original_image_name": "dataset/test/0/9097360R.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.625,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 6.6924,
+          "csv_overlay_path": "predicted/0/9097360R_gradcam.png",
+          "csv_ai_prediction": 0,
+          "treatmentGroup": "control",
+          "trialNum": 4,
+          "response": 1,
+          "csv_ai_probability": 0.10200248,
+          "timestamp": {
+            "_seconds": 1763987554,
+            "_nanoseconds": 638000000
+          }
+        },
+        "baseline_5": {
+          "phase": "baseline",
+          "trialIndex": 5,
+          "imageID": "/annotation/baseline/5.png",
+          "trialType": "baseline",
+          "confidence": 5,
+          "csv_original_image_name": "dataset/test/0/9397988L.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.635,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 57.8284,
+          "csv_overlay_path": "predicted/0/9397988L_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "control",
+          "trialNum": 5,
+          "response": 0,
+          "csv_ai_probability": 0.54088765,
+          "timestamp": {
+            "_seconds": 1763987556,
+            "_nanoseconds": 369000000
+          }
+        },
+        "experiment_1": {
+          "phase": "experiment",
+          "trialIndex": 1,
+          "imageID": "/annotation/experiment/1.png",
+          "trialType": "experiment",
+          "confidence": 5,
+          "csv_original_image_name": "dataset/test/2/9028786R.png",
+          "csv_ground_truth_raw": "2",
+          "time_sec": 1.875,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 62.7551,
+          "csv_overlay_path": "predicted/2/9028786R_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "control",
+          "trialNum": 1,
+          "response": 0,
+          "csv_ai_probability": 0.71629494,
+          "timestamp": {
+            "_seconds": 1763987559,
+            "_nanoseconds": 117000000
+          }
+        },
+        "experiment_2": {
+          "phase": "experiment",
+          "trialIndex": 2,
+          "imageID": "/annotation/experiment/2.png",
+          "trialType": "experiment",
+          "confidence": 3,
+          "csv_original_image_name": "dataset/test/2/9797850L.png",
+          "csv_ground_truth_raw": "2",
+          "time_sec": 1.528,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 69.7545,
+          "csv_overlay_path": "predicted/2/9797850L_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "control",
+          "trialNum": 2,
+          "response": 1,
+          "csv_ai_probability": 0.76771379,
+          "timestamp": {
+            "_seconds": 1763987560,
+            "_nanoseconds": 751000000
+          }
+        },
+        "experiment_3": {
+          "phase": "experiment",
+          "trialIndex": 3,
+          "imageID": "/annotation/experiment/3.png",
+          "trialType": "experiment",
+          "confidence": 7,
+          "csv_original_image_name": "dataset/test/2/9017876R.png",
+          "csv_ground_truth_raw": "2",
+          "time_sec": 1.674,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 76.4648,
+          "csv_overlay_path": "predicted/2/9017876R_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "control",
+          "trialNum": 3,
+          "response": 0,
+          "csv_ai_probability": 0.65411919,
+          "timestamp": {
+            "_seconds": 1763987562,
+            "_nanoseconds": 502000000
+          }
+        },
+        "experiment_4": {
+          "phase": "experiment",
+          "trialIndex": 4,
+          "imageID": "/annotation/experiment/4.png",
+          "trialType": "experiment",
+          "confidence": 5,
+          "csv_original_image_name": "dataset/test/0/9771687L.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.421,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 25.9128,
+          "csv_overlay_path": "predicted/0/9771687L_gradcam.png",
+          "csv_ai_prediction": 0,
+          "treatmentGroup": "control",
+          "trialNum": 4,
+          "response": 0,
+          "csv_ai_probability": 0.26939705,
+          "timestamp": {
+            "_seconds": 1763987563,
+            "_nanoseconds": 999000000
+          }
+        },
+        "experiment_5": {
+          "phase": "experiment",
+          "trialIndex": 5,
+          "imageID": "/annotation/experiment/5.png",
+          "trialType": "experiment",
+          "confidence": 5,
+          "csv_original_image_name": "dataset/test/0/9631230R.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 19.557,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 14.5747,
+          "csv_overlay_path": "predicted/0/9631230R_gradcam.png",
+          "csv_ai_prediction": 0,
+          "treatmentGroup": "control",
+          "trialNum": 5,
+          "response": 0,
+          "csv_ai_probability": 0.21869558,
+          "timestamp": {
+            "_seconds": 1763987583,
+            "_nanoseconds": 647000000
+          }
+        },
+        "posttest_1": {
+          "phase": "posttest",
+          "trialIndex": 1,
+          "imageID": "/annotation/post_experiment/1.png",
+          "trialType": "posttest",
+          "confidence": 4,
+          "csv_original_image_name": "dataset/test/2/9905863L.png",
+          "csv_ground_truth_raw": "2",
+          "time_sec": 1.835,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 49.6552,
+          "csv_overlay_path": "predicted/2/9905863L_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "control",
+          "trialNum": 1,
+          "response": 1,
+          "csv_ai_probability": 0.6798591,
+          "timestamp": {
+            "_seconds": 1763987595,
+            "_nanoseconds": 890000000
+          }
+        },
+        "posttest_2": {
+          "phase": "posttest",
+          "trialIndex": 2,
+          "imageID": "/annotation/post_experiment/2.png",
+          "trialType": "posttest",
+          "confidence": 4,
+          "csv_original_image_name": "dataset/test/2/9700314L.png",
+          "csv_ground_truth_raw": "2",
+          "time_sec": 1.383,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 61.6071,
+          "csv_overlay_path": "predicted/2/9700314L_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "control",
+          "trialNum": 2,
+          "response": 0,
+          "csv_ai_probability": 0.90633607,
+          "timestamp": {
+            "_seconds": 1763987597,
+            "_nanoseconds": 359000000
+          }
+        },
+        "posttest_3": {
+          "phase": "posttest",
+          "trialIndex": 3,
+          "imageID": "/annotation/post_experiment/3.png",
+          "trialType": "posttest",
+          "confidence": 4,
+          "csv_original_image_name": "dataset/test/0/9837371L.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.37,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 63.3929,
+          "csv_overlay_path": "predicted/0/9837371L_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "control",
+          "trialNum": 3,
+          "response": 1,
+          "csv_ai_probability": 0.56671143,
+          "timestamp": {
+            "_seconds": 1763987598,
+            "_nanoseconds": 845000000
+          }
+        },
+        "posttest_4": {
+          "phase": "posttest",
+          "trialIndex": 4,
+          "imageID": "/annotation/post_experiment/4.png",
+          "trialType": "posttest",
+          "confidence": 5,
+          "csv_original_image_name": "dataset/test/3/9930342R.png",
+          "csv_ground_truth_raw": "3",
+          "time_sec": 1.308,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 68.7879,
+          "csv_overlay_path": "predicted/3/9930342R_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "control",
+          "trialNum": 4,
+          "response": 0,
+          "csv_ai_probability": 0.99664152,
+          "timestamp": {
+            "_seconds": 1763987600,
+            "_nanoseconds": 231000000
+          }
+        },
+        "posttest_5": {
+          "phase": "posttest",
+          "trialIndex": 5,
+          "imageID": "/annotation/post_experiment/5.png",
+          "trialType": "posttest",
+          "confidence": 5,
+          "csv_original_image_name": "dataset/test/0/9088396R.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.736,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 20.3105,
+          "csv_overlay_path": "predicted/0/9088396R_gradcam.png",
+          "csv_ai_prediction": 0,
+          "treatmentGroup": "control",
+          "trialNum": 5,
+          "response": 0,
+          "csv_ai_probability": 0.43237367,
+          "timestamp": {
+            "_seconds": 1763987602,
+            "_nanoseconds": 50000000
+          }
+        }
+      },
+      "lastTrialAt": {
+        "_seconds": 1763987602,
+        "_nanoseconds": 50000000
+      }
+    },
+    {
+      "id": "1aku9pt83z",
+      "userID": "1aku9pt83z",
+      "treatmentGroup": "treatment",
+      "randomizationSeed": 313376,
+      "sessionActive": true,
+      "browserInfo": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+      "screenResolution": "1920x1080",
+      "age": "26-35",
+      "gender": "female",
+      "education": "high-school",
+      "residence": "city",
+      "healthcareQualification": "nurse",
+      "completionStatus": "in_progress",
+      "createdAt": {
+        "_seconds": 1763987024,
+        "_nanoseconds": 155000000
+      },
+      "sessionStartTime": {
+        "_seconds": 1763987024,
+        "_nanoseconds": 155000000
       },
       "personality": {
         "responses": {
@@ -56,26 +550,26 @@
           "q99": "",
           "q10": "3",
           "q98": "",
-          "q13": "3",
-          "q12": "2",
-          "q15": "5",
-          "q14": "4",
-          "q17": "4",
-          "q16": "5",
-          "q19": "4",
-          "q18": "4",
-          "q20": "3",
+          "q13": "2",
+          "q12": "3",
+          "q15": "2",
+          "q14": "2",
+          "q17": "2",
+          "q16": "1",
+          "q19": "3",
+          "q18": "3",
+          "q20": "2",
           "q22": "3",
-          "q21": "2",
-          "q24": "2",
-          "q23": "2",
-          "q26": "2",
-          "q25": "1",
-          "q28": "2",
+          "q21": "3",
+          "q24": "5",
+          "q23": "4",
+          "q26": "3",
+          "q25": "4",
+          "q28": "3",
           "q27": "2",
           "q29": "2",
           "q31": "",
-          "q30": "2",
+          "q30": "3",
           "q33": "",
           "q32": "",
           "q35": "",
@@ -106,14 +600,14 @@
           "q59": "",
           "q58": "",
           "q1": "3",
-          "q2": "3",
-          "q3": "3",
-          "q4": "4",
-          "q5": "4",
-          "q6": "5",
-          "q7": "5",
-          "q8": "4",
-          "q9": "4",
+          "q2": "2",
+          "q3": "2",
+          "q4": "2",
+          "q5": "3",
+          "q6": "3",
+          "q7": "3",
+          "q8": "3",
+          "q9": "3",
           "q60": "",
           "q62": "",
           "q61": "",
@@ -126,8 +620,8 @@
           "q69": ""
         },
         "savedAt": {
-          "_seconds": 1763728616,
-          "_nanoseconds": 622000000
+          "_seconds": 1763987066,
+          "_nanoseconds": 12000000
         },
         "big5": {
           "conscientiousness": null,
@@ -152,8 +646,8 @@
           "q9": 5
         },
         "savedAt": {
-          "_seconds": 1763728628,
-          "_nanoseconds": 298000000
+          "_seconds": 1763987077,
+          "_nanoseconds": 198000000
         }
       },
       "currentPhase": "posttest",
@@ -161,696 +655,422 @@
         "baseline_1": {
           "phase": "baseline",
           "trialIndex": 1,
-          "treatmentGroup": "control",
           "imageID": "/annotation/baseline/1.png",
-          "trialNum": 1,
-          "response": 0,
           "trialType": "baseline",
-          "confidence": 5,
-          "time_sec": 1.972,
+          "confidence": 4,
+          "csv_original_image_name": "dataset/test/0/9545822R.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.84,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 48.4515,
+          "csv_overlay_path": "predicted/0/9545822R_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "treatment",
+          "trialNum": 1,
+          "response": 1,
+          "csv_ai_probability": 0.69184428,
           "timestamp": {
-            "_seconds": 1763728641,
-            "_nanoseconds": 310000000
+            "_seconds": 1763987083,
+            "_nanoseconds": 982000000
           }
         },
         "baseline_2": {
           "phase": "baseline",
           "trialIndex": 2,
-          "treatmentGroup": "control",
           "imageID": "/annotation/baseline/2.png",
-          "trialNum": 2,
-          "response": 0,
           "trialType": "baseline",
-          "confidence": 5,
-          "time_sec": 2.15,
-          "timestamp": {
-            "_seconds": 1763728643,
-            "_nanoseconds": 559000000
-          }
-        },
-        "baseline_3": {
-          "phase": "baseline",
-          "trialIndex": 3,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/baseline/3.png",
-          "trialNum": 3,
-          "response": 0,
-          "trialType": "baseline",
-          "confidence": 5,
-          "time_sec": 1.525,
-          "timestamp": {
-            "_seconds": 1763728645,
-            "_nanoseconds": 160000000
-          }
-        },
-        "baseline_4": {
-          "phase": "baseline",
-          "trialIndex": 4,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/baseline/4.png",
-          "trialNum": 4,
-          "response": 0,
-          "trialType": "baseline",
-          "confidence": 4,
-          "time_sec": 1.478,
-          "timestamp": {
-            "_seconds": 1763728646,
-            "_nanoseconds": 725000000
-          }
-        },
-        "baseline_5": {
-          "phase": "baseline",
-          "trialIndex": 5,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/baseline/5.png",
-          "trialNum": 5,
-          "response": 0,
-          "trialType": "baseline",
-          "confidence": 4,
-          "time_sec": 1.333,
-          "timestamp": {
-            "_seconds": 1763728648,
-            "_nanoseconds": 153000000
-          }
-        },
-        "experiment_1": {
-          "phase": "experiment",
-          "trialIndex": 1,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/experiment/1.png",
-          "trialNum": 1,
-          "response": 1,
-          "trialType": "experiment",
-          "confidence": 5,
-          "time_sec": 1.774,
-          "timestamp": {
-            "_seconds": 1763728651,
-            "_nanoseconds": 123000000
-          }
-        },
-        "experiment_2": {
-          "phase": "experiment",
-          "trialIndex": 2,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/experiment/2.png",
-          "trialNum": 2,
-          "response": 0,
-          "trialType": "experiment",
-          "confidence": 4,
-          "time_sec": 1.292,
-          "timestamp": {
-            "_seconds": 1763728652,
-            "_nanoseconds": 509000000
-          }
-        },
-        "experiment_3": {
-          "phase": "experiment",
-          "trialIndex": 3,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/experiment/3.png",
-          "trialNum": 3,
-          "response": 1,
-          "trialType": "experiment",
-          "confidence": 4,
-          "time_sec": 1.476,
-          "timestamp": {
-            "_seconds": 1763728654,
-            "_nanoseconds": 68000000
-          }
-        },
-        "experiment_4": {
-          "phase": "experiment",
-          "trialIndex": 4,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/experiment/4.png",
-          "trialNum": 4,
-          "response": 0,
-          "trialType": "experiment",
-          "confidence": 4,
-          "time_sec": 1.285,
-          "timestamp": {
-            "_seconds": 1763728655,
-            "_nanoseconds": 448000000
-          }
-        },
-        "experiment_5": {
-          "phase": "experiment",
-          "trialIndex": 5,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/experiment/5.png",
-          "trialNum": 5,
-          "response": 1,
-          "trialType": "experiment",
-          "confidence": 4,
-          "time_sec": 1.254,
-          "timestamp": {
-            "_seconds": 1763728656,
-            "_nanoseconds": 785000000
-          }
-        },
-        "posttest_1": {
-          "phase": "posttest",
-          "trialIndex": 1,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/post_experiment/1.png",
-          "trialNum": 1,
-          "response": 0,
-          "trialType": "posttest",
-          "confidence": 4,
-          "time_sec": 1.627,
-          "timestamp": {
-            "_seconds": 1763728659,
-            "_nanoseconds": 278000000
-          }
-        },
-        "posttest_2": {
-          "phase": "posttest",
-          "trialIndex": 2,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/post_experiment/2.png",
-          "trialNum": 2,
-          "response": 1,
-          "trialType": "posttest",
-          "confidence": 4,
-          "time_sec": 1.695,
-          "timestamp": {
-            "_seconds": 1763728661,
-            "_nanoseconds": 54000000
-          }
-        },
-        "posttest_3": {
-          "phase": "posttest",
-          "trialIndex": 3,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/post_experiment/3.png",
-          "trialNum": 3,
-          "response": 0,
-          "trialType": "posttest",
-          "confidence": 5,
-          "time_sec": 1.416,
-          "timestamp": {
-            "_seconds": 1763728662,
-            "_nanoseconds": 543000000
-          }
-        },
-        "posttest_4": {
-          "phase": "posttest",
-          "trialIndex": 4,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/post_experiment/4.png",
-          "trialNum": 4,
-          "response": 1,
-          "trialType": "posttest",
-          "confidence": 4,
-          "time_sec": 1.46,
-          "timestamp": {
-            "_seconds": 1763728664,
-            "_nanoseconds": 87000000
-          }
-        },
-        "posttest_5": {
-          "phase": "posttest",
-          "trialIndex": 5,
-          "treatmentGroup": "control",
-          "imageID": "/annotation/post_experiment/5.png",
-          "trialNum": 5,
-          "response": 0,
-          "trialType": "posttest",
-          "confidence": 4,
-          "time_sec": 1.158,
-          "timestamp": {
-            "_seconds": 1763728665,
-            "_nanoseconds": 384000000
-          }
-        }
-      },
-      "lastTrialAt": {
-        "_seconds": 1763728665,
-        "_nanoseconds": 384000000
-      }
-    },
-    {
-      "id": "1w1vxaa4fp",
-      "userID": "1w1vxaa4fp",
-      "treatmentGroup": "treatment",
-      "randomizationSeed": 822228,
-      "sessionActive": true,
-      "browserInfo": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
-      "screenResolution": "1920x1080",
-      "age": "18-25",
-      "gender": "male",
-      "education": "masters",
-      "residence": "budapest",
-      "healthcareQualification": "none",
-      "completionStatus": "in_progress",
-      "createdAt": {
-        "_seconds": 1763726398,
-        "_nanoseconds": 256000000
-      },
-      "sessionStartTime": {
-        "_seconds": 1763726398,
-        "_nanoseconds": 256000000
-      },
-      "personality": {
-        "responses": {
-          "q71": "",
-          "q70": "",
-          "q73": "",
-          "q72": "",
-          "q75": "",
-          "q74": "",
-          "q77": "",
-          "q76": "",
-          "q79": "",
-          "q78": "",
-          "q80": "",
-          "q82": "",
-          "q81": "",
-          "q84": "",
-          "q83": "",
-          "q86": "",
-          "q85": "",
-          "q88": "",
-          "q87": "",
-          "q89": "",
-          "q91": "",
-          "q90": "",
-          "q93": "",
-          "q92": "",
-          "q95": "",
-          "q94": "",
-          "q97": "",
-          "q96": "",
-          "q11": "4",
-          "q99": "",
-          "q10": "3",
-          "q98": "",
-          "q13": "4",
-          "q12": "4",
-          "q15": "3",
-          "q14": "4",
-          "q17": "2",
-          "q16": "2",
-          "q19": "2",
-          "q18": "1",
-          "q20": "3",
-          "q22": "4",
-          "q21": "3",
-          "q24": "5",
-          "q23": "4",
-          "q26": "2",
-          "q25": "2",
-          "q28": "3",
-          "q27": "3",
-          "q29": "4",
-          "q31": "",
-          "q30": "5",
-          "q33": "",
-          "q32": "",
-          "q35": "",
-          "q34": "",
-          "q37": "",
-          "q36": "",
-          "q39": "",
-          "q38": "",
-          "q40": "",
-          "q42": "",
-          "q41": "",
-          "q44": "",
-          "q43": "",
-          "q46": "",
-          "q45": "",
-          "q48": "",
-          "q47": "",
-          "q49": "",
-          "q51": "",
-          "q50": "",
-          "q53": "",
-          "q52": "",
-          "q55": "",
-          "q54": "",
-          "q57": "",
-          "q56": "",
-          "q100": "",
-          "q59": "",
-          "q58": "",
-          "q1": "3",
-          "q2": "3",
-          "q3": "3",
-          "q4": "4",
-          "q5": "4",
-          "q6": "3",
-          "q7": "3",
-          "q8": "2",
-          "q9": "3",
-          "q60": "",
-          "q62": "",
-          "q61": "",
-          "q64": "",
-          "q63": "",
-          "q66": "",
-          "q65": "",
-          "q68": "",
-          "q67": "",
-          "q69": ""
-        },
-        "savedAt": {
-          "_seconds": 1763726431,
-          "_nanoseconds": 199000000
-        },
-        "big5": {
-          "conscientiousness": null,
-          "openness": null,
-          "neuroticism": null,
-          "extroversion": null,
-          "agreeableness": null
-        }
-      },
-      "cognitive": {
-        "score": 2,
-        "responses": {
-          "q1": 5,
-          "q10": 6,
-          "q2": 6,
-          "q3": 4,
-          "q4": 5,
-          "q5": 4,
-          "q6": 5,
-          "q7": 3,
-          "q8": 5,
-          "q9": 6
-        },
-        "savedAt": {
-          "_seconds": 1763726444,
-          "_nanoseconds": 697000000
-        }
-      },
-      "currentPhase": "posttest",
-      "trials": {
-        "baseline_1": {
-          "phase": "baseline",
-          "trialIndex": 1,
-          "treatmentGroup": "treatment",
-          "imageID": "/annotation/baseline/1.png",
-          "trialNum": 1,
-          "response": 0,
-          "trialType": "baseline",
-          "confidence": 6,
-          "time_sec": 2.486,
-          "timestamp": {
-            "_seconds": 1763726490,
-            "_nanoseconds": 271000000
-          }
-        },
-        "baseline_2": {
-          "phase": "baseline",
-          "trialIndex": 2,
-          "treatmentGroup": "treatment",
-          "imageID": "/annotation/baseline/2.png",
-          "trialNum": 2,
-          "response": 0,
-          "trialType": "baseline",
-          "confidence": 6,
-          "time_sec": 1.438,
-          "timestamp": {
-            "_seconds": 1763726491,
-            "_nanoseconds": 822000000
-          }
-        },
-        "baseline_3": {
-          "phase": "baseline",
-          "trialIndex": 3,
-          "treatmentGroup": "treatment",
-          "imageID": "/annotation/baseline/3.png",
-          "trialNum": 3,
-          "response": 0,
-          "trialType": "baseline",
-          "confidence": 5,
-          "time_sec": 1.933,
-          "timestamp": {
-            "_seconds": 1763726493,
-            "_nanoseconds": 845000000
-          }
-        },
-        "baseline_4": {
-          "phase": "baseline",
-          "trialIndex": 4,
-          "treatmentGroup": "treatment",
-          "imageID": "/annotation/baseline/4.png",
-          "trialNum": 4,
-          "response": 1,
-          "trialType": "baseline",
-          "confidence": 4,
-          "time_sec": 2.099,
-          "timestamp": {
-            "_seconds": 1763726496,
-            "_nanoseconds": 44000000
-          }
-        },
-        "baseline_5": {
-          "phase": "baseline",
-          "trialIndex": 5,
-          "treatmentGroup": "treatment",
-          "imageID": "/annotation/baseline/5.png",
-          "trialNum": 5,
-          "response": 1,
-          "trialType": "baseline",
-          "confidence": 4,
-          "time_sec": 1.626,
-          "timestamp": {
-            "_seconds": 1763726497,
-            "_nanoseconds": 774000000
-          }
-        },
-        "experiment_1": {
-          "phase": "experiment",
-          "trialIndex": 1,
-          "dropdown_choice": "tünet",
-          "imageID": "/annotation/experiment/1.png",
-          "trialType": "experiment",
-          "initial_confidence": 7,
-          "post_ai_confidence": 7,
-          "ai_confidence": 0.13338840007781982,
-          "time_sec": 6.715,
-          "ai_box": null,
-          "ai_prediction": 0,
-          "decision_revised_after_ai": false,
-          "treatmentGroup": "treatment",
-          "final_decision": 0,
-          "trialNum": 1,
-          "user_box": {
-            "width": 111,
-            "x": 26,
-            "y": 109,
-            "height": 50
-          },
-          "initial_decision": 0,
-          "bbox_iou": null,
-          "timestamp": {
-            "_seconds": 1763726540,
-            "_nanoseconds": 774000000
-          }
-        },
-        "experiment_2": {
-          "phase": "experiment",
-          "trialIndex": 2,
-          "dropdown_choice": "tünet",
-          "imageID": "/annotation/experiment/2.png",
-          "trialType": "experiment",
-          "initial_confidence": 7,
-          "post_ai_confidence": 7,
-          "ai_confidence": 0.004932005,
-          "time_sec": 25.993,
-          "ai_box": null,
-          "ai_prediction": 0,
-          "decision_revised_after_ai": true,
-          "treatmentGroup": "treatment",
-          "final_decision": 0,
-          "trialNum": 2,
-          "user_box": {
-            "width": 174,
-            "x": 33,
-            "y": 102,
-            "height": 43
-          },
-          "initial_decision": 1,
-          "bbox_iou": null,
-          "timestamp": {
-            "_seconds": 1763726566,
-            "_nanoseconds": 861000000
-          }
-        },
-        "experiment_3": {
-          "phase": "experiment",
-          "trialIndex": 3,
-          "dropdown_choice": "nincsen tünet",
-          "imageID": "/annotation/experiment/3.png",
-          "trialType": "experiment",
-          "initial_confidence": 6,
-          "post_ai_confidence": 7,
-          "ai_confidence": 0.9910439252853394,
-          "time_sec": 22.518,
-          "ai_box": {
-            "width": 159,
-            "x": 0,
-            "y": 46,
-            "height": 155
-          },
-          "ai_prediction": 1,
-          "decision_revised_after_ai": false,
-          "treatmentGroup": "treatment",
-          "final_decision": 0,
-          "trialNum": 3,
-          "user_box": null,
-          "initial_decision": 0,
-          "bbox_iou": null,
-          "timestamp": {
-            "_seconds": 1763726589,
-            "_nanoseconds": 476000000
-          }
-        },
-        "experiment_4": {
-          "phase": "experiment",
-          "trialIndex": 4,
-          "dropdown_choice": "nincsen tünet",
-          "imageID": "/annotation/experiment/4.png",
-          "trialType": "experiment",
-          "initial_confidence": 5,
-          "post_ai_confidence": 7,
-          "ai_confidence": 0.9864799380302429,
-          "time_sec": 30.24,
-          "ai_box": {
-            "width": 157,
-            "x": 0,
-            "y": 35,
-            "height": 164
-          },
-          "ai_prediction": 1,
-          "decision_revised_after_ai": true,
-          "treatmentGroup": "treatment",
-          "final_decision": 1,
-          "trialNum": 4,
-          "user_box": null,
-          "initial_decision": 0,
-          "bbox_iou": null,
-          "timestamp": {
-            "_seconds": 1763726619,
-            "_nanoseconds": 803000000
-          }
-        },
-        "experiment_5": {
-          "phase": "experiment",
-          "trialIndex": 5,
-          "dropdown_choice": "tünet",
-          "imageID": "/annotation/experiment/5.png",
-          "trialType": "experiment",
-          "initial_confidence": 7,
-          "post_ai_confidence": 7,
-          "ai_confidence": 0.999786913,
-          "time_sec": 19.481,
-          "ai_box": {
-            "width": 168,
-            "x": 0,
-            "y": 46,
-            "height": 148
-          },
-          "ai_prediction": 1,
-          "decision_revised_after_ai": false,
-          "treatmentGroup": "treatment",
-          "final_decision": 1,
-          "trialNum": 5,
-          "user_box": {
-            "width": 93,
-            "x": 114,
-            "y": 94,
-            "height": 42
-          },
-          "initial_decision": 1,
-          "bbox_iou": 0.08557844690966719,
-          "timestamp": {
-            "_seconds": 1763726639,
-            "_nanoseconds": 380000000
-          }
-        },
-        "posttest_1": {
-          "phase": "posttest",
-          "trialIndex": 1,
-          "treatmentGroup": "treatment",
-          "imageID": "/annotation/post_experiment/1.png",
-          "trialNum": 1,
-          "response": 0,
-          "trialType": "posttest",
-          "confidence": 5,
-          "time_sec": 1.926,
-          "timestamp": {
-            "_seconds": 1763726642,
-            "_nanoseconds": 228000000
-          }
-        },
-        "posttest_2": {
-          "phase": "posttest",
-          "trialIndex": 2,
-          "treatmentGroup": "treatment",
-          "imageID": "/annotation/post_experiment/2.png",
-          "trialNum": 2,
-          "response": 0,
-          "trialType": "posttest",
-          "confidence": 6,
-          "time_sec": 1.687,
-          "timestamp": {
-            "_seconds": 1763726644,
-            "_nanoseconds": 0
-          }
-        },
-        "posttest_3": {
-          "phase": "posttest",
-          "trialIndex": 3,
-          "treatmentGroup": "treatment",
-          "imageID": "/annotation/post_experiment/3.png",
-          "trialNum": 3,
-          "response": 1,
-          "trialType": "posttest",
-          "confidence": 4,
-          "time_sec": 10.945,
-          "timestamp": {
-            "_seconds": 1763726655,
-            "_nanoseconds": 26000000
-          }
-        },
-        "posttest_4": {
-          "phase": "posttest",
-          "trialIndex": 4,
-          "treatmentGroup": "treatment",
-          "imageID": "/annotation/post_experiment/4.png",
-          "trialNum": 4,
-          "response": 1,
-          "trialType": "posttest",
           "confidence": 3,
-          "time_sec": 1.572,
+          "csv_original_image_name": "dataset/test/0/9384119R.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 27.853,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 0,
+          "csv_overlay_path": "predicted/0/9384119R_gradcam.png",
+          "csv_ai_prediction": 0,
+          "treatmentGroup": "treatment",
+          "trialNum": 2,
+          "response": 1,
+          "csv_ai_probability": 0.03749398,
           "timestamp": {
-            "_seconds": 1763726656,
-            "_nanoseconds": 688000000
+            "_seconds": 1763987111,
+            "_nanoseconds": 938000000
+          }
+        },
+        "baseline_3": {
+          "phase": "baseline",
+          "trialIndex": 3,
+          "imageID": "/annotation/baseline/3.png",
+          "trialType": "baseline",
+          "confidence": 3,
+          "csv_original_image_name": "dataset/test/2/9076313R.png",
+          "csv_ground_truth_raw": "2",
+          "time_sec": 1.314,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 75.3548,
+          "csv_overlay_path": "predicted/2/9076313R_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "treatment",
+          "trialNum": 3,
+          "response": 1,
+          "csv_ai_probability": 0.99932158,
+          "timestamp": {
+            "_seconds": 1763987113,
+            "_nanoseconds": 343000000
+          }
+        },
+        "baseline_4": {
+          "phase": "baseline",
+          "trialIndex": 4,
+          "imageID": "/annotation/baseline/4.png",
+          "trialType": "baseline",
+          "confidence": 3,
+          "csv_original_image_name": "dataset/test/0/9097360R.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.179,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 6.6924,
+          "csv_overlay_path": "predicted/0/9097360R_gradcam.png",
+          "csv_ai_prediction": 0,
+          "treatmentGroup": "treatment",
+          "trialNum": 4,
+          "response": 1,
+          "csv_ai_probability": 0.10200248,
+          "timestamp": {
+            "_seconds": 1763987114,
+            "_nanoseconds": 627000000
+          }
+        },
+        "baseline_5": {
+          "phase": "baseline",
+          "trialIndex": 5,
+          "imageID": "/annotation/baseline/5.png",
+          "trialType": "baseline",
+          "confidence": 3,
+          "csv_original_image_name": "dataset/test/0/9397988L.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.138,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 57.8284,
+          "csv_overlay_path": "predicted/0/9397988L_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "treatment",
+          "trialNum": 5,
+          "response": 1,
+          "csv_ai_probability": 0.54088765,
+          "timestamp": {
+            "_seconds": 1763987115,
+            "_nanoseconds": 843000000
+          }
+        },
+        "experiment_1": {
+          "trialIndex": 1,
+          "dropdown_choice": "tünet",
+          "imageID": "/annotation/experiment/1.png",
+          "initial_confidence": 4,
+          "ai_confidence": 0.71629494,
+          "ai_box": {
+            "width": 164,
+            "x": 22,
+            "y": 32,
+            "height": 192
+          },
+          "csv_bbox_area_pct": 62.7551,
+          "ai_prediction": 1,
+          "csv_overlay_path": "predicted/2/9028786R_gradcam.png",
+          "trialNum": 1,
+          "csv_ai_probability": 0.71629494,
+          "timestamp": {
+            "_seconds": 1763987151,
+            "_nanoseconds": 783000000
+          },
+          "phase": "experiment",
+          "trialType": "experiment",
+          "csv_original_image_name": "dataset/test/2/9028786R.png",
+          "csv_ground_truth_raw": "2",
+          "post_ai_confidence": 4,
+          "time_sec": 32.202,
+          "csv_ground_truth_binary": 1,
+          "csv_ai_prediction": 1,
+          "decision_revised_after_ai": false,
+          "treatmentGroup": "treatment",
+          "final_decision": 1,
+          "user_box": {
+            "width": 121,
+            "x": 29,
+            "y": 109,
+            "height": 40
+          },
+          "initial_decision": 1,
+          "bbox_iou": 0.15370934959349594
+        },
+        "experiment_2": {
+          "trialIndex": 2,
+          "dropdown_choice": "bizonytalan",
+          "imageID": "/annotation/experiment/2.png",
+          "initial_confidence": 4,
+          "ai_confidence": 0.76771379,
+          "ai_box": {
+            "width": 200,
+            "x": 24,
+            "y": 23,
+            "height": 175
+          },
+          "csv_bbox_area_pct": 69.7545,
+          "ai_prediction": 1,
+          "csv_overlay_path": "predicted/2/9797850L_gradcam.png",
+          "trialNum": 2,
+          "csv_ai_probability": 0.76771379,
+          "timestamp": {
+            "_seconds": 1763987425,
+            "_nanoseconds": 173000000
+          },
+          "phase": "experiment",
+          "trialType": "experiment",
+          "csv_original_image_name": "dataset/test/2/9797850L.png",
+          "csv_ground_truth_raw": "2",
+          "post_ai_confidence": 4,
+          "time_sec": 171.34,
+          "csv_ground_truth_binary": 1,
+          "csv_ai_prediction": 1,
+          "decision_revised_after_ai": true,
+          "treatmentGroup": "treatment",
+          "final_decision": 0,
+          "user_box": null,
+          "initial_decision": 1,
+          "bbox_iou": null
+        },
+        "experiment_3": {
+          "trialIndex": 3,
+          "dropdown_choice": "tünet",
+          "imageID": "/annotation/experiment/3.png",
+          "initial_confidence": 6,
+          "ai_confidence": 0.65411919,
+          "ai_box": {
+            "width": 189,
+            "x": 0,
+            "y": 0,
+            "height": 203
+          },
+          "csv_bbox_area_pct": 76.4648,
+          "ai_prediction": 1,
+          "csv_overlay_path": "predicted/2/9017876R_gradcam.png",
+          "trialNum": 3,
+          "csv_ai_probability": 0.65411919,
+          "timestamp": {
+            "_seconds": 1763987445,
+            "_nanoseconds": 928000000
+          },
+          "phase": "experiment",
+          "trialType": "experiment",
+          "csv_original_image_name": "dataset/test/2/9017876R.png",
+          "csv_ground_truth_raw": "2",
+          "post_ai_confidence": 4,
+          "time_sec": 20.639,
+          "csv_ground_truth_binary": 1,
+          "csv_ai_prediction": 1,
+          "decision_revised_after_ai": false,
+          "treatmentGroup": "treatment",
+          "final_decision": 1,
+          "user_box": {
+            "width": 68,
+            "x": 61,
+            "y": 84,
+            "height": 46
+          },
+          "initial_decision": 1,
+          "bbox_iou": 0.08152839679933276
+        },
+        "experiment_4": {
+          "trialIndex": 4,
+          "dropdown_choice": "bizonytalan",
+          "imageID": "/annotation/experiment/4.png",
+          "initial_confidence": 5,
+          "ai_confidence": 0.26939705,
+          "ai_box": {
+            "width": 197,
+            "x": 0,
+            "y": 0,
+            "height": 66
+          },
+          "csv_bbox_area_pct": 25.9128,
+          "ai_prediction": 0,
+          "csv_overlay_path": "predicted/0/9771687L_gradcam.png",
+          "trialNum": 4,
+          "csv_ai_probability": 0.26939705,
+          "timestamp": {
+            "_seconds": 1763987451,
+            "_nanoseconds": 252000000
+          },
+          "phase": "experiment",
+          "trialType": "experiment",
+          "csv_original_image_name": "dataset/test/0/9771687L.png",
+          "csv_ground_truth_raw": "0",
+          "post_ai_confidence": 5,
+          "time_sec": 5.208,
+          "csv_ground_truth_binary": 0,
+          "csv_ai_prediction": 0,
+          "decision_revised_after_ai": false,
+          "treatmentGroup": "treatment",
+          "final_decision": 1,
+          "user_box": {
+            "width": 56,
+            "x": 51,
+            "y": 124,
+            "height": 45
+          },
+          "initial_decision": 1,
+          "bbox_iou": 0
+        },
+        "experiment_5": {
+          "trialIndex": 5,
+          "dropdown_choice": "bizonytalan",
+          "imageID": "/annotation/experiment/5.png",
+          "initial_confidence": 5,
+          "ai_confidence": 0.21869558,
+          "ai_box": {
+            "width": 71,
+            "x": 0,
+            "y": 0,
+            "height": 103
+          },
+          "csv_bbox_area_pct": 14.5747,
+          "ai_prediction": 0,
+          "csv_overlay_path": "predicted/0/9631230R_gradcam.png",
+          "trialNum": 5,
+          "csv_ai_probability": 0.21869558,
+          "timestamp": {
+            "_seconds": 1763987457,
+            "_nanoseconds": 164000000
+          },
+          "phase": "experiment",
+          "trialType": "experiment",
+          "csv_original_image_name": "dataset/test/0/9631230R.png",
+          "csv_ground_truth_raw": "0",
+          "post_ai_confidence": 5,
+          "time_sec": 5.825,
+          "csv_ground_truth_binary": 0,
+          "csv_ai_prediction": 0,
+          "decision_revised_after_ai": false,
+          "treatmentGroup": "treatment",
+          "final_decision": 1,
+          "user_box": null,
+          "initial_decision": 1,
+          "bbox_iou": null
+        },
+        "posttest_1": {
+          "phase": "posttest",
+          "trialIndex": 1,
+          "imageID": "/annotation/post_experiment/1.png",
+          "trialType": "posttest",
+          "confidence": 4,
+          "csv_original_image_name": "dataset/test/2/9905863L.png",
+          "csv_ground_truth_raw": "2",
+          "time_sec": 1.528,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 49.6552,
+          "csv_overlay_path": "predicted/2/9905863L_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "treatment",
+          "trialNum": 1,
+          "response": 1,
+          "csv_ai_probability": 0.6798591,
+          "timestamp": {
+            "_seconds": 1763987459,
+            "_nanoseconds": 601000000
+          }
+        },
+        "posttest_2": {
+          "phase": "posttest",
+          "trialIndex": 2,
+          "imageID": "/annotation/post_experiment/2.png",
+          "trialType": "posttest",
+          "confidence": 6,
+          "csv_original_image_name": "dataset/test/2/9700314L.png",
+          "csv_ground_truth_raw": "2",
+          "time_sec": 1.25,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 61.6071,
+          "csv_overlay_path": "predicted/2/9700314L_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "treatment",
+          "trialNum": 2,
+          "response": 1,
+          "csv_ai_probability": 0.90633607,
+          "timestamp": {
+            "_seconds": 1763987460,
+            "_nanoseconds": 981000000
+          }
+        },
+        "posttest_3": {
+          "phase": "posttest",
+          "trialIndex": 3,
+          "imageID": "/annotation/post_experiment/3.png",
+          "trialType": "posttest",
+          "confidence": 6,
+          "csv_original_image_name": "dataset/test/0/9837371L.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.206,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 63.3929,
+          "csv_overlay_path": "predicted/0/9837371L_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "treatment",
+          "trialNum": 3,
+          "response": 0,
+          "csv_ai_probability": 0.56671143,
+          "timestamp": {
+            "_seconds": 1763987462,
+            "_nanoseconds": 270000000
+          }
+        },
+        "posttest_4": {
+          "phase": "posttest",
+          "trialIndex": 4,
+          "imageID": "/annotation/post_experiment/4.png",
+          "trialType": "posttest",
+          "confidence": 2,
+          "csv_original_image_name": "dataset/test/3/9930342R.png",
+          "csv_ground_truth_raw": "3",
+          "time_sec": 1.632,
+          "csv_ground_truth_binary": 1,
+          "csv_bbox_area_pct": 68.7879,
+          "csv_overlay_path": "predicted/3/9930342R_gradcam.png",
+          "csv_ai_prediction": 1,
+          "treatmentGroup": "treatment",
+          "trialNum": 4,
+          "response": 0,
+          "csv_ai_probability": 0.99664152,
+          "timestamp": {
+            "_seconds": 1763987464,
+            "_nanoseconds": 6000000
           }
         },
         "posttest_5": {
           "phase": "posttest",
           "trialIndex": 5,
-          "treatmentGroup": "treatment",
           "imageID": "/annotation/post_experiment/5.png",
-          "trialNum": 5,
-          "response": 0,
           "trialType": "posttest",
-          "confidence": 5,
-          "time_sec": 7.567,
+          "confidence": 1,
+          "csv_original_image_name": "dataset/test/0/9088396R.png",
+          "csv_ground_truth_raw": "0",
+          "time_sec": 1.364,
+          "csv_ground_truth_binary": 0,
+          "csv_bbox_area_pct": 20.3105,
+          "csv_overlay_path": "predicted/0/9088396R_gradcam.png",
+          "csv_ai_prediction": 0,
+          "treatmentGroup": "treatment",
+          "trialNum": 5,
+          "response": 1,
+          "csv_ai_probability": 0.43237367,
           "timestamp": {
-            "_seconds": 1763726664,
-            "_nanoseconds": 357000000
+            "_seconds": 1763987465,
+            "_nanoseconds": 511000000
           }
         }
       },
       "lastTrialAt": {
-        "_seconds": 1763726664,
-        "_nanoseconds": 357000000
+        "_seconds": 1763987465,
+        "_nanoseconds": 511000000
       }
     }
   ]
